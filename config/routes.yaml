@@ -1,0 +1,7 @@
+catalog:
+  path: /
+  controller: App\Controller\CatalogController::index
+
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index

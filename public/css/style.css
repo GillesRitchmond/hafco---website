@@ -1,0 +1,127 @@
+body{
+    font-size:larger;
+    font-family: 'Roboto', sans-serif;
+}
+
+/**************** BASIC COLOR ***********************/
+.primary{
+    color:#FFBC00
+}
+.secondary{
+    color:#345282
+}
+.third-color{
+    color: #BBBBBB;
+}
+.btn-primary{
+    background-color: #FFBC00;
+}
+
+/**************** NAVBAR ***********************/
+
+nav{
+    background-color: #FFF;
+    margin-top: 15px;
+}
+nav ul{
+    margin: 0 auto;
+}
+nav ul li{
+    margin: 0 25px;
+}
+nav ul img{
+    margin-top: -12px;
+}
+nav ul li a{
+    color: #345282;
+}
+nav ul li a:hover{
+    color: #FFBC00;
+}
+.body-hafco{
+    margin-top:80px;
+}
+
+/**************** PRODUCTS PAGE ***********************/
+
+.banner{
+    background-color: #345282;
+    height: 350px;
+    padding:5%;
+}
+.text-width h1{
+    font-size:40px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.text-width{
+    width:500px;
+    color:#FFF;
+    margin: 0 auto;
+    text-align: center;
+}
+#ctlg{
+    color:#FFBC00;
+}
+.search{
+    margin-top: 30px;
+    align-content: center;
+}
+.form-control{
+    border-radius: 30px 30px;
+}
+.btn .btn-primary{
+    border-style: none;
+    border-radius: 30px;
+}
+.input-group-btn{
+    background-color: #FFF;
+    color: #345282;
+}
+
+.dropdown.dropdown-lg .dropdown-menu {
+    margin-top: -1px;
+    padding: 6px 20px;
+}
+.input-group-btn .btn-group {
+    display: flex !important;
+}
+.btn-group .btn {
+    border-radius: 0;
+    margin-left: -1px;
+}
+.btn-group .btn:last-child {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+.btn-group .form-horizontal .btn[type="submit"] {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.form-horizontal .form-group {
+    margin-left: 0;
+    margin-right: 0;
+}
+.form-group .form-control:last-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+@media screen and (min-width: 768px) {
+    #adv-search {
+        width: 500px;
+        margin: 0 auto;
+    }
+    .dropdown.dropdown-lg {
+        position: static !important;
+    }
+    .dropdown.dropdown-lg .dropdown-menu {
+        min-width: 500px;
+    }
+}
+
+
+/**************** SECTION CONTENT ***********************/
+.section-content{
+    margin-top: 30px;
+}
