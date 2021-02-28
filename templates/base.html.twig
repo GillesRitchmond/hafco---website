@@ -44,13 +44,13 @@
             
             <div class="container">
               
-                <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="collapse sticky-top navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#">Accueil</a>
+                            <a class="nav-link {% if controller_name is defined and controller_name == 'HomeController' %} active {% endif %}" aria-current="page" href="{{path('home')}}">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Qui sommes-nous ?</a>
+                            <a class="nav-link {% if controller_name is defined and controller_name == 'AboutUsController' %} active {% endif %}" href="{{path('about_us')}}">Qui sommes-nous ?</a>
                         </li>
 
                         <li class="nav-item img">
@@ -60,10 +60,10 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Produits</a>
+                            <a class="nav-link {% if controller_name is defined and controller_name == 'CatalogController' %} active {% endif %}" href="{{path('catalog')}}">Produits</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Services & Contact</a>
+                            <a class="nav-link {% if controller_name is defined and controller_name == 'ContactAndServicesController' %} active {% endif %}" href="{{path('contact_and_services')}}">Services & Contact</a>
                         </li>
                     </ul>
                 </div>
@@ -71,5 +71,52 @@
         </nav>
 
         {% block body %}{% endblock %}
+
+        <div class="footer">
+            <div class="footer-content container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h1>HAFCO</h1>
+                            <ul class="footer-link">
+                                <li><a href="#">Qui sommes-nous ?</a></li>
+                                <li><a href="#">Notre historicité</a></li>
+                                <li><a href="#">Nos produits</a></li>
+                                <li><a href="#">Nos services</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm first-row">
+                            <h1>Services de la HAFCO</h1>
+                            <ul class="footer-link">
+                                <li><a href="#">Demande de devis</a></li>
+                                <li><a href="#">Réparation et restauration de meuble</a></li>
+                                <li><a href="#">Commander nos produits</a></li>
+                                <li><a href="#">Produits sur mesure</a></li>
+                                <li><a href="#">Tous nos services</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-sm">
+                            <h1>Besoin d'aide ?</h1>
+                            <ul class="footer-link contact">
+                                <li><span class="contact-infos">(509) 28 13 1786 <br/> (509) 28 13 1787</span></li>
+                                <li><span class="contact-infos">hafcosameubles@yahoo.fr</span></li>
+                                <li><span class="contact-infos">40, entre Martissant 13 et 15 <br/> Port-au-Prince, Haïti</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="politics">
+                        <hr>
+                        <a href="#">Mentions légales</a> | <a href="#">Conditions générales de ventes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <div class="bottom">
+                    <div class="copywrite">
+                        <a href="#">HAFCO</a> Haitian American Fiberglass Company S.A. | Développé par <a href="#">Ritchmond Gilles</a>
+                    </div>
+                </div>
+            </div>
     </body>
 </html>

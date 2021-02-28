@@ -13,7 +13,7 @@ body{
 .third-color{
     color: #BBBBBB;
 }
-.btn-primary{
+.btn-primary .active{
     background-color: #FFBC00;
 }
 
@@ -21,10 +21,11 @@ body{
 
 nav{
     background-color: #FFF;
-    margin-top: 15px;
+    /* margin-top: 15px; */
 }
 nav ul{
     margin: 0 auto;
+    margin-top: 10px;
 }
 nav ul li{
     margin: 0 25px;
@@ -38,11 +39,16 @@ nav ul li a{
 nav ul li a:hover{
     color: #FFBC00;
 }
+.active{
+    color:#FFBC00;
+}
 .body-hafco{
     margin-top:80px;
 }
 
 /**************** PRODUCTS PAGE ***********************/
+
+/**************** BANNER ***********************/
 
 .banner{
     background-color: #345282;
@@ -124,4 +130,140 @@ nav ul li a:hover{
 /**************** SECTION CONTENT ***********************/
 .section-content{
     margin-top: 30px;
+    font-size: medium;
+}
+/* .breadcrumb{
+    margin-top: -15px;
+} */
+.category{
+   font-size: medium; 
+}
+hr{
+    color :#345282;
+}
+.card{
+    margin: 10px;
+    height: min-content;
+}
+.card .text-muted a{
+    color:#FFF;
+    font-size: medium;
+    text-decoration: none;
+}
+.card-title{
+    color: #345282;
+    font-size:larger;
+}
+.card-footer .text-muted a:hover{
+    color:#345282;
+    background-color: #FFBC00;
+}
+.card-footer{
+    background-color: #345282;
+}
+.card-footer:hover{
+    color:#345282;
+    background-color: #FFBC00;
+}
+.pagination{
+    margin-top: 25px;
+}
+.pagination .page-item{
+    margin:0px;
+}
+
+/**************** FOOTER ***********************/
+
+.footer{
+    background-color: #345282;
+    height: max-content;
+    margin-top: 50px;
+    padding:35px;
+    padding-bottom:15px;
+}
+.footer-content{
+    text-align: left;
+    font-size: medium;
+    /* margin: 0 auto; */
+}
+.footer-content h1{
+    color:#FFBC00;
+    font-weight: bold;
+    font-size: x-large;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+.footer-link{
+    font-weight: lighter;
+    color: #FFF;
+}
+.footer-link li{
+    list-style: none;
+    text-align: left;  
+    margin-top: 7px;
+}
+.footer-link li a{
+    color:#FFF;
+    text-decoration: none;
+}
+.footer-link li a:hover{
+    color:#FFBC00;
+    text-decoration: underline;
+}
+.first-row{
+    margin-left: -40px;
+    margin-right: 40px;
+}
+.contact-infos{
+    color:#FFF;
+    justify-content: center;
+}
+.contact li{
+    border-style: solid;
+    border-width: thin;
+    border-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-position: center;
+    padding:10px;
+    /* height: 60px; */
+}
+.contact li:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #FFF;
+}
+.politics{
+    color: #FFF;
+    text-align: center;
+    margin-top: 5px;
+    font-size: medium;
+}
+.politics a{
+    color:#FFF;
+    text-decoration: none;
+    align-content: center;
+}
+.politics a:hover{
+    color:#FFBC00;
+    text-decoration: underline;
+}
+.politics hr{
+    color:#FFF;
+    height: 2px;
+}
+.copywrite{
+    background-color: #FFF;
+    font-size:medium;
+    color: #707070;
+    text-align: center;
+    padding: 10px;
+}
+.copywrite a{
+    text-decoration: none;
+}
+.copywrite a:hover{
+    color:#FFBC00;
+    text-decoration: underline;
 }
