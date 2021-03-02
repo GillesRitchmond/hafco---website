@@ -3,7 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>
-            HAFCO - Catalogue
             {% block title %} {% endblock %}
         </title>
         {# Run `composer require symfony/webpack-encore-bundle`
@@ -25,6 +24,8 @@
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
 
+        <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
             integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous">
         </script>
@@ -40,7 +41,7 @@
 
     <body>
 
-        <nav class="navbar fixed-top navbar-expand-lg ">
+        <nav class="navbar fixed-top navbar-expand-lg fixed-navbar">
             
             <div class="container">
               
@@ -53,7 +54,7 @@
                             <a class="nav-link {% if controller_name is defined and controller_name == 'AboutUsController' %} active {% endif %}" href="{{path('about_us')}}">Qui sommes-nous ?</a>
                         </li>
 
-                        <li class="nav-item img">
+                        <li class="nav-item">
                             <a class="nav-link" href="#">
                                 <img src="{{asset('images/group4@2x.png')}}" alt="" width="100%" height="100%" class="d-inline-block align-top">
                             </a>
@@ -94,7 +95,7 @@
                                 <li><a href="#">Tous nos services</a></li>
                             </ul>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm help">
                             <h1>Besoin d'aide ?</h1>
                             <ul class="footer-link contact">
                                 <li><span class="contact-infos">(509) 28 13 1786 <br/> (509) 28 13 1787</span></li>

@@ -19,9 +19,10 @@ body{
 
 /**************** NAVBAR ***********************/
 
-nav{
+.fixed-navbar{
     background-color: #FFF;
     /* margin-top: 15px; */
+    box-shadow: 0px 0.15px 20px #345282;
 }
 nav ul{
     margin: 0 auto;
@@ -46,6 +47,107 @@ nav ul li a:hover{
     margin-top:80px;
 }
 
+
+/**************** FOOTER ***********************/
+
+.footer{
+    background-color: #345282;
+    height: max-content;
+    margin-top: 50px;
+    padding:35px;
+    padding-bottom:15px;
+}
+.footer-content{
+    text-align: left;
+    font-size: medium;
+    /* margin: 0 auto; */
+}
+.footer-content h1{
+    color:#FFBC00;
+    font-weight: bold;
+    font-size: x-large;
+    margin-left: 30px;
+    margin-bottom: 25px;
+}
+.footer-link{
+    font-weight: lighter;
+    color: #FFF;
+}
+.footer-link li{
+    list-style: none;
+    text-align: left;  
+    margin-top: 7px;
+}
+.footer-link li a{
+    color:#FFF;
+    text-decoration: none;
+}
+.footer-link li a:hover{
+    color:#FFBC00;
+    text-decoration: underline;
+}
+/* .first-row{
+    margin-left: -40px;
+    margin-right: 40px;
+} */
+.help{
+    text-align: center;
+}
+.contact-infos{
+    color:#FFF;
+    justify-content: center;
+}
+.contact li{
+    border-style: solid;
+    border-width: thin;
+    border-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-position: center;
+    padding:10px;
+    /* height: 60px; */
+}
+.contact li:hover{
+    background-color: rgba(255, 255, 255, 0.1);
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: #FFF;
+}
+.politics{
+    color: #FFF;
+    text-align: center;
+    margin-top: 5px;
+    font-size: medium;
+}
+.politics a{
+    color:#FFF;
+    text-decoration: none;
+    align-content: center;
+}
+.politics a:hover{
+    color:#FFBC00;
+    text-decoration: underline;
+}
+.politics hr{
+    color:#FFF;
+    height: 2px;
+}
+.copywrite{
+    background-color: #FFF;
+    font-size:medium;
+    color: #707070;
+    text-align: center;
+    padding: 10px;
+}
+.copywrite a{
+    text-decoration: none;
+}
+.copywrite a:hover{
+    color:#FFBC00;
+    text-decoration: underline;
+}
+
+
 /**************** PRODUCTS PAGE ***********************/
 
 /**************** BANNER ***********************/
@@ -56,7 +158,7 @@ nav ul li a:hover{
     padding:5%;
 }
 .text-width h1{
-    font-size:40px;
+    font-size: 30px;
     text-transform: uppercase;
     font-weight: bold;
 }
@@ -172,98 +274,223 @@ hr{
     margin:0px;
 }
 
-/**************** FOOTER ***********************/
 
-.footer{
-    background-color: #345282;
-    height: max-content;
-    margin-top: 50px;
-    padding:35px;
-    padding-bottom:15px;
+/**************** HOME PAGE ***********************/
+
+/**************** BANNER ***********************/
+.carousel-item{
+    height: 350px;
 }
-.footer-content{
-    text-align: left;
-    font-size: medium;
-    /* margin: 0 auto; */
+.carousel-inner{
+    margin-top: -80px;
 }
-.footer-content h1{
-    color:#FFBC00;
-    font-weight: bold;
-    font-size: x-large;
-    margin-left: 30px;
-    margin-bottom: 25px;
+.iconify-left{
+    content: url('https://api.iconify.design/fa-angle-left.svg?color=white&height=14&inline=true');
+    vertical-align: -0.143em;
 }
-.footer-link{
-    font-weight: lighter;
-    color: #FFF;
+.iconify-right{
+    content: url('https://api.iconify.design/fa-angle-right.svg?color=white&height=14&inline=true');
+    vertical-align: -0.143em;
 }
-.footer-link li{
-    list-style: none;
-    text-align: left;  
-    margin-top: 7px;
+.carousel-control-next{
+    margin-right:  -90px ;
 }
-.footer-link li a{
-    color:#FFF;
-    text-decoration: none;
-}
-.footer-link li a:hover{
-    color:#FFBC00;
-    text-decoration: underline;
-}
-.first-row{
-    margin-left: -40px;
-    margin-right: 40px;
-}
-.contact-infos{
-    color:#FFF;
-    justify-content: center;
-}
-.contact li{
-    border-style: solid;
-    border-width: thin;
-    border-color: rgba(255, 255, 255, 0.1);
-    text-align: center;
-    background-color: rgba(255, 255, 255, 0.1);
-    background-position: center;
-    padding:10px;
-    /* height: 60px; */
-}
-.contact li:hover{
-    background-color: rgba(255, 255, 255, 0.1);
-    border-style: solid;
-    border-width: 0.5px;
-    border-color: #FFF;
-}
-.politics{
-    color: #FFF;
-    text-align: center;
-    margin-top: 5px;
+.section-content{
     font-size: medium;
 }
-.politics a{
-    color:#FFF;
+.meubles-btn{
+  list-style: none;
+  text-align: center;  
+  margin: 50px;
+}
+.meubles-btn a{
     text-decoration: none;
-    align-content: center;
-}
-.politics a:hover{
-    color:#FFBC00;
-    text-decoration: underline;
-}
-.politics hr{
     color:#FFF;
-    height: 2px;
-}
-.copywrite{
-    background-color: #FFF;
-    font-size:medium;
-    color: #707070;
-    text-align: center;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
     padding: 10px;
 }
-.copywrite a{
-    text-decoration: none;
+.meubles-btn a:hover{
+    background-color: #FFBC00;
+    color:#345282;
+    border-style: none;
 }
-.copywrite a:hover{
-    color:#FFBC00;
-    text-decoration: underline;
+.starred-link{
+    text-align: center;
+    margin-top: 60px;
+}
+.starred-link span{
+    background-color: #FFBC00;
+    color:#345282;
+    padding: 10px;
+    font-size: x-large;
+    font-weight: bold;
+}
+.starred-link .links .breadcrumb{
+    margin: 0 auto;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+.links{
+    width: max-content;
+    margin: 0 auto;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+}
+.links .breadcrumb .breadcrumb-item{
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: -20px;
+}
+.breadcrumb .breadcrumb-item a{
+    color: #345282;
+    text-align: center;
+    margin: 0 auto;
+    padding: 15px;
+}
+.breadcrumb .breadcrumb-item a:hover{
+    color: #FFBC00;
+}
+.home-aboutUs{
+    color:#FFF;
+    margin-top: 20px;
+}
+.home-aboutUs .row{
+    padding: 20px 0;
+    margin: 0 auto;
+    align-content: center;
+    justify-content: center;
+}   
+.home-aboutUs .row .bg-color{
+    background-color: #345282;
+    height: 100%;
+    padding: 30px;
+}
+.home-aboutUs h1{
+    font-size: xx-large;
+    font-weight: bold;
+}
+.home-aboutUs hr{
+    height: 4px;
+    opacity: 100%;
+    width: auto;
+    color: #FFBC00;
+    text-align: left;
+}
+.home-aboutUs .row p{
+    width:fit-content;
+    text-align: justify;
+    margin-top:auto;
+}
+.bg-color a{
+    text-decoration: none;
+    background-color: #FFBC00;
+    color:#345282;
+    margin-top: 16px;
+    padding: 10px;
+}
+.bg-color a:hover{
+    background-color: #FFF;
+    color: #345282;
+}
+.starred-link p{
+    padding-top: 40px;
+    width: 450px;
+    text-align: center;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+.product-content .row{
+    padding: 5px;
+}
+.product-content .row .col{
+    margin: 5px;
+}
+.product-content .more-link{
+    margin:40px;
+    align-content: center;
+    color: #345282;
+    justify-content: center;
+    text-align: center;
+}
+.more-link a{
+    text-align: center;
+    text-decoration: none;
+    color:#345282;
+    padding: 15px;
+    border: solid;
+    border-radius: 8px;
+    border-color: #345282;
+}
+.more-link a:hover{
+    color: #345282;
+    border: none;
+    background-color: #FFBC00;
+}
+
+/**************** ABOUT US PAGE ***********************/
+
+.block-text{
+    margin-top: 30px;
+}
+.block-text p{
+    text-align: justify;
+    text-justify: auto;
+}
+
+/**************** SERVICES PAGE ***********************/
+.services h1{
+    text-align: center;
+    margin: 0 auto;
+    color: #345282;
+}
+.services .help-services{
+    margin-top: 30px;
+}
+.services .help-services p{
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+.services .help-services p span{
+    color: #345282;
+}
+.starred-link .bg-light{
+    height: fit-content;
+    padding: 30px;
+}
+.bg-light .m-table-auto{
+    margin-top: 40px;
+}
+.table{
+    width: fit-content;
+    margin: 0 auto;
+}
+.table .tbody{
+    margin: 0 auto;
+}
+.table tbody td{
+    padding: 10px 20px;
+    text-align: justify;
+}
+.table tbody h5{
+    text-align: right;
+}
+.form-contact{
+    margin-top: 30px;
+}
+.form-contact .form-control{
+    border-radius: 0px;
+}
+.form-contact .form-row{
+    margin-top:20px;
+}
+.submit-btn{
+    margin-top: 20px;
+}
+.form-contact .row .col-sm h1{
+    font-size: xx-large;
 }
