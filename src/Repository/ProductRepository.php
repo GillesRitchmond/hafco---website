@@ -40,11 +40,9 @@ class ProductRepository extends ServiceEntityRepository
     public function findLatest(): array
     {
         return $this->createQueryBuilder('p')
-        ->where('p.productPrice = 2000')
         ->setMaxResults(10)
         ->getQuery()
-        ->getResult()
-    ;
+        ->getResult();
     }
 
     // /**

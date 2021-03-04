@@ -178,7 +178,7 @@ nav ul li a:hover{
 .form-control{
     border-radius: 30px 30px;
 }
-.btn .btn-primary{
+.col-md-12 .input-group .btn .btn-primary{
     border-style: none;
     border-radius: 30px;
 }
@@ -186,7 +186,6 @@ nav ul li a:hover{
     background-color: #FFF;
     color: #345282;
 }
-
 .dropdown.dropdown-lg .dropdown-menu {
     margin-top: -1px;
     padding: 6px 20px;
@@ -229,14 +228,62 @@ nav ul li a:hover{
 }
 
 
+/**************** FOR EACH PRODUCT PAGE  ***********************/
+
+.card-title{
+    font-weight: bold;
+}
+.product{
+    margin-top: 150px;
+}
+.product .bg-light{
+    padding: 30px;
+}
+.product-details{
+    text-align:start;
+}
+.product-details h1{
+    color:#345282;
+    font-weight: bold;
+    font-size: xx-large;
+}
+.product-details p{
+    text-align: justify;
+    font-size: medium;
+}
+.whatsapp-btn{
+    background-color: #dcf8c6;
+    border-color: #25d366;
+    border-style: solid;
+    border-width: medium;
+    color: #075e54;
+    margin-left: -10px;
+}
+.whatsapp-btn:hover{
+    background-color: #075e54 ;
+    border-style: solid;
+    border-width: medium;
+    border-color: #075e54; 
+    color: #FFF;
+}
+.price{
+    font-weight: 300;
+    font-size: x-large;
+    color: #345282;
+}
+.link{
+    color: #345282;
+    margin-left:-10px;
+}
+.link:hover{
+    color:#FFBC00
+}
+
 /**************** SECTION CONTENT ***********************/
 .section-content{
     margin-top: 30px;
     font-size: medium;
 }
-/* .breadcrumb{
-    margin-top: -15px;
-} */
 .category{
    font-size: medium; 
 }
@@ -247,7 +294,10 @@ hr{
     margin: 10px;
     height: min-content;
 }
-.card .text-muted a{
+.card a{
+    text-decoration: none;
+}
+.card a .text{
     color:#FFF;
     font-size: medium;
     text-decoration: none;
@@ -256,14 +306,15 @@ hr{
     color: #345282;
     font-size:larger;
 }
-.card-footer .text-muted a:hover{
+.card-footer{
+    background-color: #345282;
+    color: #FFF;
+}
+.card-footer:hover{
     color:#345282;
     background-color: #FFBC00;
 }
-.card-footer{
-    background-color: #345282;
-}
-.card-footer:hover{
+.card-footer .text:hover{
     color:#345282;
     background-color: #FFBC00;
 }

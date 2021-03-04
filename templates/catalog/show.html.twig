@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}HAFCO-Catalogue{% endblock %}
+
+{% block body %}
+    <div class="container product">
+        <div class="row bg-light">
+            <div class="col-sm">
+                        <img src="http://placehold.it/600x400" height="100%" width="100%"/>
+                    </div>
+            <div class="col-sm">
+            
+                <div class="product-details">
+                    <h1>{{product.productName}}</h1>
+                    <p> {{product.productDescription}}</p>
+                    <span class="price">{{product.productPrice}} HTG</span>
+                </div>
+
+                <div class="product-details">
+                   
+                    <div class="message-btn btn">
+                        <a class="btn whatsapp-btn" href="#">Ecrivez nous sur whatsapp</a>
+                        <br/><br/>
+                        <a class="link" href="{{path ('catalog')}}">Retournez à la liste des produits</a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+            
+    </div>
+{% endblock %}

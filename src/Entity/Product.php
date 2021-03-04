@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -37,6 +39,14 @@ class Product
      */
     private $Image;
 
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"productName"})
+     * 
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -45,6 +55,19 @@ class Product
     public function getProductName(): ?string
     {
         return $this->productName;
+    }
+
+    public function getSlug(): ?string
+    {
+        //return (new Slugify())->slugify($this->productName);
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
     }
 
     public function setProductName(string $productName): self
@@ -89,4 +112,5 @@ class Product
 
         return $this;
     }
+    
 }

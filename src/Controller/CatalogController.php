@@ -49,4 +49,43 @@ class CatalogController extends AbstractController
         ]);
         
     }
+
+    /**
+     * @Route("/catalogue/{slug}-{id}", name="product.show", requirements={"slug": "[A-Za-z0-9\-]*"})
+     * @return Response
+     */
+    public function show(Product $products, string $slug, int $id): Response
+    {
+        // if ($products->getSlug()) !== $slug)
+        // {
+        //     return $this->redirectToRoute('product.show',[
+        //         'id' => $products->getId(),
+        //         'slug' => $products->getSlug()
+        //     ], 301);
+        // }
+
+        $product = $this->getDoctrine()
+            ->getRepository(Product::class)
+            ->find($id);
+
+        if (!$products) {
+
+            return $this->redirectToRoute('product.show',[
+                'id' => $products->getId(),
+                'slug' => $products->getSlug()
+            ], 301);
+
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+        // return new Response('Check out this great product: '.$product->getName());
+
+
+        //$product = $this->repository->find($id);
+        return $this->render('catalog/show.html.twig', [
+            'controller_name' => 'CatalogController',
+            'product' => $product
+        ]);
+    }
 }
