@@ -71,8 +71,8 @@
                                 <a href="{{ path ('admin.product.edit',{id: product.id}) }}" class="btn btn-secondary">Modifier</a>
                                 <form method="POST" action="{{ path('admin.product.delete', {id: product.id}) }}" 
                                 onsubmit="return confirm('Etes vous vraiment sûr ?')" stye="display:inline-block">
-                                    <input type="hidden" name="_method" value="DELETE"/>
-                                    <input type="hidden" name="_token" value="{{ csrf_token('delete', product.id)}}"/>
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id)}}">
                                     <button class="btn btn-danger">Supprimer</button>
                                 </form>
                             </td>
