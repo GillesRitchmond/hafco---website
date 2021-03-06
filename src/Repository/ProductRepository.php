@@ -23,6 +23,15 @@ class ProductRepository extends ServiceEntityRepository
      * @return Product[]
      */
 
+    public function findAllProducts(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.productPrice = 2000')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     public function findAllVisible(): array
     {
         return $this->createQueryBuilder('p')
@@ -43,6 +52,15 @@ class ProductRepository extends ServiceEntityRepository
         ->setMaxResults(10)
         ->getQuery()
         ->getResult();
+    }
+
+    /**
+     * @return Product[]
+     */
+
+    public function findAll(): array
+    {
+        return $this->findBy(array(), array('productName' => 'ASC'));
     }
 
     // /**
