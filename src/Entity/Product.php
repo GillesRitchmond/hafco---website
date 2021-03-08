@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Cocur\Slugify\Bridge\Symfony\CocurSlugifyBundle;
+use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
@@ -12,6 +12,13 @@ use Gedmo\Mapping\Annotation as Gedmo;
  */
 class Product
 {
+    const PRICE = [
+        0 => '10000',
+        1 => '500000',
+        2 => '500000'
+    ];
+
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -21,16 +28,21 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
+     * @Assert\Length(min=5, max=255)
      */
     private $productName;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Type("string")
      */
     private $productDescription;
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @Assert\Type("decimal")
+     * @Assert\Regex("/^[0-9]$")
      */
     private $productPrice;
 

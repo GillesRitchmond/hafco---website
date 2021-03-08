@@ -1,12 +1,12 @@
-{{form_start(form)}}
-    <div class="row">
-        <div class="col-md-4">{{form_row(form.productName)}}</div>
-        <div class="col-md-4">{{form_row(form.productDescription)}}</div>
-        <div class="col-md-4">{{form_row(form.productPrice)}}</div>
-        <div class="col-md-4">{{form_row(form.Image)}}</div>
-        {# <div class="col-md-4">{{form_row(form.slug)}}</div> #}
-{{form_widget(form)}}
+    {{form_start(form)}}
 
-        <button class="btn btn-primary">{{button|default('Enregistrer')}}</button>
-    </div>
-{{form_end(form)}}
+            <div class="row form_product">
+                <div class="col-md-6 form_field">{{form_row(form.productName)}}</div>
+                <div class="col-md-6 form_field">{{form_row(form.productDescription)}}</div>
+                <div class="col-md-6 form_field">{{form_row(form.productPrice)}}</div>
+                <div class="col-md-6 form_field">{{form_row(form.Image)}}</div>
+                {# <div class="col-md-4">{{form_row(form.slug)}}</div> #}
+        {{form_rest(form)}}
+                <button class="btn btn-primary form_btn">{{button|default('Enregistrer')}}</button>
+            </div>
+    {{form_end(form)}}

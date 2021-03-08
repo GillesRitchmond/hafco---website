@@ -3,7 +3,11 @@
 namespace App\Form;
 
 use App\Entity\Product;
+use Doctrine\DBAL\Types\DecimalType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,11 +18,14 @@ class ProductType extends AbstractType
         $builder
             ->add('productName', null, [
                 'label' => 'Nom du produit'
-            ])
+            ], TextType::class)
             ->add('productDescription', null, [
                 'label' => 'Description du produit'
-            ])
-            ->add('productPrice', null, [
+            ], TextareaType::class)
+            // ->add('productPrice', null, [
+            //     'label' => 'Prix du produit'
+            // ], DecimalType::class)
+            ->add('productPrice', ChoiceType::class,['choices'=>$this->getChoices()], null, [
                 'label' => 'Prix du produit'
             ])
             ->add('Image')
@@ -31,5 +38,16 @@ class ProductType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Product::class,
         ]);
+    }
+
+    private function getChoices()
+    {
+        $choices = Product::PRICE;
+        $output = [];
+        foreach($choices as $k =>$v)
+        {
+            $output[$v] = $k;
+        }
+        return $output;
     }
 }

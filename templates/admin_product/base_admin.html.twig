@@ -16,8 +16,8 @@
         {% block stylesheets %}
            {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
-
-         <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
+            <script src="https://kit.fontawesome.com/c32e345056.js" crossorigin="anonymous"></script>
+            <link rel="stylesheet" href="{{asset('css/admin-style.css')}}"/>
 
 
         {% block javascripts %} 
@@ -41,13 +41,33 @@
 
     <body>
 
-        <div>
-            <div></div>
+        <div class="section-management">
+            <h1> Gestion des produits de la HAFCO </h1>
+            <div class="container">
+                    <div class="row g-2">
+                        <div class="col-6 col-md-3">
+                            <div class="d-flex align-items-start">
+                                <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link {% if controller_name is defined and controller_name == 'AdminProductController' %} activate {% endif %}" href="{{ path('admin-product')}}" >Produits</a>
+                                    <a class="nav-link">Catégories</a>
+                                    <a class="nav-link">Sous-Catégories</a>
+                                    <a class="nav-link">Utilisateurs</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-9 bg-light">
+                            {% block body %}
+                            
+                            {% endblock %}
+                        </div>
+                    </div>
+            </div>
         </div>
-        {% block body %}{% endblock %}
-
+        
+        
         <div class="footer">
             <div class="footer-content container">
+            <hr>
                 <div class="bottom">
                     <div class="copywrite">
                         Gestion des produits de la HAFCO | Développé par <a href="#">Ritchmond Gilles</a>
