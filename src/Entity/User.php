@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserInterface\Serializable;
 
@@ -11,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface\Serializable;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
-class User implements UserInterface,\Serializable
+class User implements UserInterface
 {
     /**
      * @ORM\Id
@@ -44,6 +45,14 @@ class User implements UserInterface,\Serializable
      * @ORM\Column(type="string", length=255)
      */
     private $username;
+
+    // /**
+    //  * @var string
+    //  * @Gedmo\Slug(fields={"Nom"})
+    //  * 
+    //  * @ORM\Column(type="string", length=255, nullable=true)
+    //  */
+    // private $slug;
 
     public function getId(): ?int
     {
@@ -109,10 +118,21 @@ class User implements UserInterface,\Serializable
         return $this;
     }
 
+    // public function getSlug(): ?string
+    // {
+    //     //return (new Slugify())->slugify($this->productName);
+    //     return $this->slug;
+    // }
 
+    // public function setSlug(string $slug): self
+    // {
+    //     $this->slug = $slug;
+
+    //     return $this;
+    // }
 
     /** 
-     * return (Role|string)[] The user roles
+     * @return (Role|string)[] The user roles
      * 
      */
     public function getRoles()
@@ -120,6 +140,10 @@ class User implements UserInterface,\Serializable
         return ['ROLE_ADMIN'];
     }
 
+
+    /**
+     * @return string|null  The salt 
+     */
     public function getSalt()
     {
         return null;
@@ -130,6 +154,11 @@ class User implements UserInterface,\Serializable
         
     }
 
+    /**
+     * @link https://php.net/manual/en/serializable.serialize.php
+     * @return string
+     * @since 5.1.0
+     */
     public function serialize()
     {
         return serialize([
@@ -142,6 +171,15 @@ class User implements UserInterface,\Serializable
         ]);
     }
 
+
+    /**
+     * @link https://php.net/manual/en/serializable.unserialize.php
+     * @param string $serialized <p>
+     * The string representation of the object
+     * </p>
+     * @return void
+     * @since 5.1.0
+     */
     public function unserialize($serialized)
     {
         list(

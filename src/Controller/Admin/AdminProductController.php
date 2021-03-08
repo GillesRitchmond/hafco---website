@@ -25,7 +25,7 @@ class AdminProductController extends AbstractController
     }
 
     /**
-     * @Route("/admin/product", name="admin-product")
+     * @Route("/admin", name="admin-product")
      */
     public function index(ProductRepository $repository): Response
     {
