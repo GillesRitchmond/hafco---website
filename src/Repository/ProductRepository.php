@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -32,13 +34,13 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findAllVisible(): array
+    /**
+     * @return Query
+     */
+    public function findAllVisibleQuery(): Query
     {
         return $this->createQueryBuilder('p')
-            ->where('p.productPrice = 2000')
-            ->getQuery()
-            ->getResult()
-        ;
+            ->getQuery();
     }
 
 
