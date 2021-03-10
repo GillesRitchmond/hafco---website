@@ -10,37 +10,46 @@
             <div class="content container">
                 <div class="text-width">
 
-                    <h1> Rechercher dans notre <span id="ctlg"> catalogue </span> </h1>
+                    <h1> Rechercher dans <br/> notre<span id="ctlg"> catalogue </span> </h1>
 
-                    <div class="input-group mb-3 search">
-                       <div class="row">
-                            <div class="col-md-12">
-                                <div class="input-group" id="adv-search">
+                    <div class="input-group search">
+                       <div class="row search-form">
+                       {{form_start(form, {'method': 'GET'})}}
+                            <div class="col-lg-12">
+                                <div class="row px-12" id="adv-search">
+                                    <div class="row">
+                        {# MENU DEROULANT POUR LES CATEGORIES #}
 
-                                    {# MENU DEROULANT POUR LES CATEGORIES #}
-
-                                        <div class="input-group-btn">
-                                            <button type="button" class="btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <div class="col-2 col-sm-3 form-row">
+                                            <button type="button" class="input-group-btn btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
                                                 <span class="glyphicon glyphicon-search"></span>
-                                                <span class="label-icon">Les catégories</span>
+                                                <span class="label-icon">Catégories</span>
                                                 <span class="caret"></span>
                                             </button>
                                         </div>
 
-                                    {# CHAMP DE SAISIE #}
+                        {# CHAMP DE SAISIE #}
+                                        
 
-                                        <input type="text" class="form-control" placeholder="Exemple : Fournitures de bureau" />
+                                        {# <input type="text" class="form-control" placeholder="Exemple : Fournitures de bureau" {{(form.productName)}}/> #}
+                                       
+                                        <div class="col-9 col-md-9 form-row search-field">
+                                            {{form_row(form.productName)}}
+                                        </div>
 
-                                    {# BOUTON DE VALIDATION DE LA RECHERCHE #}
-
-                                    <button type="button" class="btn btn-primary">
-                                        <span class="glyphicon glyphicon-search" aria-hidden="true" >
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0
-                                                0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                                            </svg>
-                                        </span>
-                                    </button>
+                        {# BOUTON DE VALIDATION DE LA RECHERCHE #}
+                                        <div class="">
+                                            <button class="btn btn-secondary mt-4"> Rechercher
+                                                {# <span class="glyphicon glyphicon-search" aria-hidden="true" >
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0
+                                                        0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                    </svg>
+                                                </span> #}
+                                            </button>
+                                        </div>
+                                    </div>
+                                    {{form_end(form)}}
                                 </div>
                             </div>
                         </div>
@@ -74,10 +83,10 @@
                             </div>
                             <hr>
 
-                        <div class="row row-cols-1 row-cols-md-3 g-1">
+                        <div class="row row-cols-1 row-cols-md-3 g-2">
                                 {% for product in products %}
-                                    <div class="col-md-4 mb-4">
-                                        <div class="card h-100 mb-4">
+                                    <div class="col-md-4">
+                                        <div class="card mx-auto my-auto h-100">
                                                     {{product.image}}
                                             {# <img src="{{product.Image}}" class="card-img-top" alt="..."> #}
                                             <div class="card-body">

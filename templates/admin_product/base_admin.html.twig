@@ -42,25 +42,25 @@
     <body>
 
         <div class="section-management">
-            <div class="container mt-4">
+            {# <div class="container mt-4"> 
             {% if app.user %}
                  <span class="" > {{ app.user.prenom }} {{ app.user.prenom }} </span> | <a href="{{ path('app_logout') }}">Se déconnecter</a>
             {% endif %}
-            </div>
+            </div> #}
             <h1> Gestion des produits de la HAFCO </h1>
             <div class="container">
-                    <div class="row g-2">
-                        <div class="col-6 col-md-3">
-                            <div class="d-flex align-items-start">
-                                <div class="nav flex-column nav-pills me-3" role="tablist" aria-orientation="vertical">
+                    <div class="row">
+                        <div class="admin-link bg-light">
+                            <div class="">
+                                <div class="nav">
                                     <a class="nav-link {% if controller_name is defined and controller_name == 'AdminProductController' %} activate {% endif %}" href="{{ path('admin-product')}}" >Produits</a>
-                                    <a class="nav-link">Catégories</a>
+                                    <a class="nav-link {% if controller_name is defined and controller_name == 'AdminCategoryController' %} activate {% endif %}" href="{{ path('admin-category')}}">Catégories</a>
                                     <a class="nav-link">Sous-Catégories</a>
                                     <a class="nav-link">Utilisateurs</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-6 col-md-9 bg-light">
+                        <div class="col-sm-12 col-md-12 bg-light">
                             {% block body %}
                             
                             {% endblock %}

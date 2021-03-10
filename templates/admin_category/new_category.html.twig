@@ -1,0 +1,23 @@
+{% extends 'admin_product/base_admin.html.twig' %}
+    
+{% block body %}
+    <body>
+
+        <div class="container">
+            <div class="section">
+                <ul>
+                    <li>
+                        <a href="{{path ('admin-category')}}" class="btn btn-primary fas fa-long-arrow-alt-left"></a>
+                    </li>
+                    <li>
+                        <h2> Ajouter une nouvelle catégorie </h2>
+                    </li>
+                </ul>
+            </div>
+            
+                <hr>
+            {{ include ('/admin_category/_category_form.html.twig', {form: form, button: 'Ajouter'}) }}
+        </div>
+    </body>
+{% endblock %}
+

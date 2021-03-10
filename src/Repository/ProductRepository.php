@@ -3,9 +3,14 @@
 namespace App\Repository;
 
 use App\Entity\Product;
+use App\Entity\ProductSearch;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\Migrations\Query\Query as QueryQuery;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Query;
+use Doctrine\ORM\Query\ResultSetMapping;
+use Doctrine\ORM\QueryBuilder as ORMQueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,10 +42,17 @@ class ProductRepository extends ServiceEntityRepository
     /**
      * @return Query
      */
-    public function findAllVisibleQuery(): Query
+    public function findAllVisibleQuery(ProductSearch $search): Query
     {
-        return $this->createQueryBuilder('p')
-            ->getQuery();
+        
+        $query = $this->findVisibleQuery();
+
+        if($search->getProductName()){
+            $query = $query
+                ->where('p.productName LIKE :name')
+                ->setParameter('name', '%'.$search->getProductName().'%');
+        }
+        return $query->getQuery();
     }
 
 
@@ -63,6 +75,12 @@ class ProductRepository extends ServiceEntityRepository
     public function findAll(): array
     {
         return $this->findBy(array(), array('productName' => 'ASC'));
+    }
+
+    public function findVisibleQuery(): ORMQueryBuilder
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.productPrice >= 0');
     }
 
     // /**

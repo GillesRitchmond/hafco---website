@@ -25,25 +25,26 @@ body{
 }
 
 /**************** BASE ADMIN ****************/
-.section-management{
-
-}
 .section-management h1{
     text-align: center;
     margin: 30px;
     color:#345282;
     font-weight: bold;
 }
-.nav{
+.admin-link{
     background-color: #f8f9fa;
-    width: 500px;
+    margin: 0 auto;
+}
+.admin-link .nav{
+    text-align: center;
 }
 .nav .nav-link{
     text-align: center;
-    margin: 10px;
+    margin: 5px;
     color: #FFF;
     background-color: #345282;
-    padding: 15px;
+    padding: 10px;
+    width: max-content;
 }
 .nav .nav-link:hover{
     background-color: #FFBC00;

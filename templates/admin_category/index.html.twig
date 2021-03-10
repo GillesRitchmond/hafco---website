@@ -7,10 +7,10 @@
             <div class="section">
                 <ul>
                     <li>
-                        <h2> Liste des produits </h2>
+                        <h2> Liste des Catégories </h2>
                     </li>
                     <li>
-                        <a href="{{path ('admin.product.new')}}" class="btn btn-primary">Ajouter un nouveau produit</a>
+                        <a href="{{path ('admin.category.new')}}" class="btn btn-primary">Ajouter une nouvelle catégorie de produit</a>
                     </li>
                 </ul>
             </div>
@@ -26,32 +26,28 @@
                 <table class="table table-hover table-bordered">
                     <thead class="table-color-brand">
                         <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Titre</th>
-                        <th scope="col">Description</th>
-                        {# <th scope="col">Prix</th> #}
-                        <th scope="col">Image</th>
-                        <th scope="col">Actions</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for product in products %}
+                        {% for category in categories %}
                             <tr>
-                                <td>{{product.id}}</td>
-                                <td class="name">{{ product.productName}}</td>
-                                <td>{{ product.productDescription}}</td>
-                                {# <td>{{ product.productPrice}}</td> #}
-                                <td>{{ product.image}}</td>
+                                <td>{{category.id}}</td>
+                                <td class="name">{{ category.categoryName}}</td>
+                                <td>{{ category.categoryDescription }}</td>
                                 <td>
                                     <ul class="action-group">
                                         <li>
-                                            <a href="{{ path ('admin.product.edit',{id: product.id}) }}" class="btn btn-secondary fas fa-pen fa-sm action"></a>
+                                            <a href="{{ path ('admin.category.edit',{id: category.id}) }}" class="btn btn-secondary fas fa-pen fa-sm action"></a>
                                         </li>
                                         <li>
-                                            <form method="POST" action="{{ path('admin.product.delete', {id: product.id}) }}" 
+                                            <form method="POST" action="{{ path('admin.category.delete', {id: category.id}) }}" 
                                             onsubmit="return confirm('Etes vous vraiment sûr ?')">
                                                 <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id)}}">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ category.id)}}">
                                                 <a class="btn btn-danger far fa-trash-alt fa-sm action"></a>
                                             </form>
                                         </li>

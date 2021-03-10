@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * @ORM\Entity(repositoryClass=CategoryRepository::class)
@@ -26,6 +28,14 @@ class Category
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $CategoryDescription;
+
+    // /**
+    //  * @var string
+    //  * @Gedmo\Slug(fields={"categoryName"})
+    //  * 
+    //  * @ORM\Column(type="string", length=255, nullable=true)
+    //  */
+    // private $slug;
 
     public function getId(): ?int
     {
@@ -55,4 +65,17 @@ class Category
 
         return $this;
     }
+
+    // public function getSlug(): ?string
+    // {
+    //     //return (new Slugify())->slugify($this->productName);
+    //     return $this->slug;
+    // }
+
+    // public function setSlug(string $slug): self
+    // {
+    //     $this->slug = $slug;
+
+    //     return $this;
+    // } 
 }
