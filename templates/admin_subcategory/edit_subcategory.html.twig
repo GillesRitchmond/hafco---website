@@ -1,0 +1,9 @@
+{% extends 'admin_product/base_admin.html.twig' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <h1> Editer la sous-catégorie </h1>
+        {{ include ('/admin_subcategory/_subcategory_form.html.twig',{form: form, button: 'Editer'}) }}
+    </div>
+{% endblock %}
+

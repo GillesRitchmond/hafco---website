@@ -169,14 +169,14 @@ nav ul li a:hover{
     justify-content: center;
 }
 .text-width h1{
-    font-size: 40px;
+    font-size: 30px;
     text-transform: uppercase;
     font-weight: bold;
     margin: 0 auto;
     text-align: center;
 }
 .text-width{
-    width:500px;
+    width:450px;
     color:#FFF;
     margin: 0 auto;
     text-align: center;
@@ -355,8 +355,18 @@ hr{
 /**************** HOME PAGE ***********************/
 
 /**************** BANNER ***********************/
+
+/* .banner{
+    background-image:url('../images/img2.jpg');
+    background-repeat: no-repeat;
+} */
+/* .bg-images{
+    width: 100%;
+    height: 100%;
+} */
 .carousel-item{
     height: 350px;
+    width: 100%;
 }
 .carousel-inner{
     margin-top: -80px;

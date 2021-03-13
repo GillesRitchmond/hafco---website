@@ -27,6 +27,11 @@ class SubCategory
      */
     private $SubCategoryDescription;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=category::class, inversedBy="subCategories")
+     */
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class SubCategory
     public function setSubCategoryDescription(?string $SubCategoryDescription): self
     {
         $this->SubCategoryDescription = $SubCategoryDescription;
+
+        return $this;
+    }
+
+    public function getCategory(): ?category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

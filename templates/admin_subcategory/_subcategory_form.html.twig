@@ -1,0 +1,9 @@
+    {{form_start(form)}}
+
+            <div class="row form_product">
+                <div class="col-md-6 form_field">{{form_row(form.subcategoryName)}}</div>
+                <div class="col-md-6 form_field">{{form_row(form.subcategoryDescription)}}</div>
+        {{form_rest(form)}}
+                <button class="btn btn-primary form_btn">{{button|default('Enregistrer')}}</button>
+            </div>
+    {{form_end(form)}}

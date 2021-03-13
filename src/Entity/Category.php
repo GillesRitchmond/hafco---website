@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -28,6 +30,22 @@ class Category
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $CategoryDescription;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Product::class, mappedBy="categories")
+     */
+    private $products;
+
+    /**
+     * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="category")
+     */
+    private $subCategories;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+        $this->subCategories = new ArrayCollection();
+    }
 
     // /**
     //  * @var string
@@ -78,4 +96,64 @@ class Category
 
     //     return $this;
     // } 
+
+    /**
+     * @return Collection|Product[]
+     */
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function addProduct(Product $product): self
+    {
+        if (!$this->products->contains($product)) {
+            $this->products[] = $product;
+            $product->setCategories($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProduct(Product $product): self
+    {
+        if ($this->products->removeElement($product)) {
+            // set the owning side to null (unless already changed)
+            if ($product->getCategories() === $this) {
+                $product->setCategories(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SubCategory[]
+     */
+    public function getSubCategories(): Collection
+    {
+        return $this->subCategories;
+    }
+
+    public function addSubCategory(SubCategory $subCategory): self
+    {
+        if (!$this->subCategories->contains($subCategory)) {
+            $this->subCategories[] = $subCategory;
+            $subCategory->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubCategory(SubCategory $subCategory): self
+    {
+        if ($this->subCategories->removeElement($subCategory)) {
+            // set the owning side to null (unless already changed)
+            if ($subCategory->getCategory() === $this) {
+                $subCategory->setCategory(null);
+            }
+        }
+
+        return $this;
+    }
 }

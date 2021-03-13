@@ -55,7 +55,7 @@
                                 <div class="nav">
                                     <a class="nav-link {% if controller_name is defined and controller_name == 'AdminProductController' %} activate {% endif %}" href="{{ path('admin-product')}}" >Produits</a>
                                     <a class="nav-link {% if controller_name is defined and controller_name == 'AdminCategoryController' %} activate {% endif %}" href="{{ path('admin-category')}}">Catégories</a>
-                                    <a class="nav-link">Sous-Catégories</a>
+                                    <a class="nav-link {% if controller_name is defined and controller_name == 'AdminsubCategoryController' %} activate {% endif %}" href="{{ path('admin-subcategory')}}">Sous-Catégories</a>
                                     <a class="nav-link">Utilisateurs</a>
                                 </div>
                             </div>

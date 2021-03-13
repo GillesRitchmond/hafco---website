@@ -59,6 +59,12 @@ class Product
      */
     private $slug;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=category::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categories;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -121,6 +127,18 @@ class Product
     public function setImage(?string $Image): self
     {
         $this->Image = $Image;
+
+        return $this;
+    }
+
+    public function getCategories(): ?category
+    {
+        return $this->categories;
+    }
+
+    public function setCategories(?category $categories): self
+    {
+        $this->categories = $categories;
 
         return $this;
     }

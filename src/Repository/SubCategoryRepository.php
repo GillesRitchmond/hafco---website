@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\SubCategory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -19,16 +21,60 @@ class SubCategoryRepository extends ServiceEntityRepository
         parent::__construct($registry, SubCategory::class);
     }
 
+    /**
+     * @return SubCategory[]
+     */
+
+    public function findAllCategories(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.productPrice = 2000')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    /**
+     * @return Query
+     */
+    public function findAllVisibleQuery(): Query
+    {
+        return $this->createQueryBuilder('p')
+            ->getQuery();
+    }
+
+
+    /**
+     * @return SubCategory[]
+     */
+
+    public function findLatest(): array
+    {
+        return $this->createQueryBuilder('p')
+        ->setMaxResults(10)
+        ->getQuery()
+        ->getResult();
+    }
+
+    /**
+     * @return SubCategory[]
+     */
+
+    public function findAll(): array
+    {
+        return $this->findBy(array(), array('SubCategoryName' => 'ASC'));
+    }
+
     // /**
     //  * @return SubCategory[] Returns an array of SubCategory objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
+            ->orderBy('p.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -39,8 +85,8 @@ class SubCategoryRepository extends ServiceEntityRepository
     /*
     public function findOneBySomeField($value): ?SubCategory
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()

@@ -1,0 +1,64 @@
+{% extends 'admin_product/base_admin.html.twig' %}
+
+{% block title %}Administration du site{% endblock %}
+  
+{% block body %}
+        <div class="container">
+            <div class="section">
+                <ul>
+                    <li>
+                        <h2> Liste des Sous-catégories </h2>
+                    </li>
+                    <li>
+                        <a href="{{path ('admin.subcategory.new')}}" class="btn btn-primary">Ajouter une nouvelle sous-catégorie de produit</a>
+                    </li>
+                </ul>
+            </div>
+                
+            <hr>
+
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead class="table-color-brand">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subcategory in subcategories %}
+                            <tr>
+                                <td>{{subcategory.id}}</td>
+                                <td class="name">{{ subcategory.subcategoryName}}</td>
+                                <td>{{ subcategory.subcategoryDescription }}</td>
+                                <td>
+                                    <ul class="action-group">
+                                        <li>
+                                            <a href="{{ path ('admin.subcategory.edit',{id: subcategory.id}) }}" class="btn btn-secondary fas fa-pen fa-sm action"></a>
+                                        </li>
+                                        <li>
+                                            <form method="POST" action="{{ path('admin.subcategory.delete', {id: subcategory.id}) }}" 
+                                            onsubmit="return confirm('Etes vous vraiment sûr ?')">
+                                                <input type="hidden" name="_method" value="DELETE">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ subcategory.id)}}">
+                                                <a class="btn btn-danger far fa-trash-alt fa-sm action"></a>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+{% endblock %}
+

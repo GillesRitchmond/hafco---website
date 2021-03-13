@@ -87,8 +87,8 @@
                                 {% for product in products %}
                                     <div class="col-md-4">
                                         <div class="card mx-auto my-auto h-100">
-                                                    {{product.image}}
-                                            {# <img src="{{product.Image}}" class="card-img-top" alt="..."> #}
+                                                    {# <img src="{{product.image}}" style="height=100%; width=100%"/> #}
+                                            <img src="{{product.image}}" class="card-img-top" height="100%" width="100%">
                                             <div class="card-body">
                                                 <h3 class="card-title"> 
                                                     {{product.productName}}
@@ -113,17 +113,7 @@
                                 <div aria-label="navigation" class="bg-light">
                                         
                                         {{ knp_pagination_render(products) }}
-                                        {# <ul class="pagination justify-content-center">
-                                            <li class="page-item disabled">
-                                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Précédent</a>
-                                            </li>
-                                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#">Suivant</a>
-                                            </li>
-                                        </ul> #}
+                                        
                                 </div>
                             </div>
                         </div>
