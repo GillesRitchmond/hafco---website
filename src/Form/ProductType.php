@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\DBAL\Types\DecimalType;
 use Symfony\Component\Form\AbstractType;
@@ -25,6 +26,9 @@ class ProductType extends AbstractType
             // ->add('productPrice', null, [
             //     'label' => 'Prix du produit'
             // ], DecimalType::class)
+            ->add('categories_id', ChoiceType::class,[
+
+            ])
             ->add('productPrice', ChoiceType::class,['choices'=>$this->getChoices()], null, [
                 'label' => 'Prix du produit'
             ])
@@ -40,14 +44,22 @@ class ProductType extends AbstractType
         ]);
     }
 
-    private function getChoices()
+    private function getCategoriesChoices(Category $category)
     {
-        $choices = Product::PRICE;
+        $getcategories = 
         $output = [];
-        foreach($choices as $k =>$v)
-        {
-            $output[$v] = $k;
+        foreach($getcategories as $k=>$v){
+
         }
-        return $output;
     }
+    // private function getChoices()
+    // {
+    //     $choices = Product::PRICE;
+    //     $output = [];
+    //     foreach($choices as $k =>$v)
+    //     {
+    //         $output[$v] = $k;
+    //     }
+    //     return $output;
+    // }
 }
