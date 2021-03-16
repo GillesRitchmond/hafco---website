@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\DBAL\Types\DecimalType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,6 +17,8 @@ class ProductType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        // private $category;
+
         $builder
             ->add('productName', null, [
                 'label' => 'Nom du produit'
@@ -23,14 +26,16 @@ class ProductType extends AbstractType
             ->add('productDescription', null, [
                 'label' => 'Description du produit'
             ], TextareaType::class)
-            // ->add('productPrice', null, [
-            //     'label' => 'Prix du produit'
-            // ], DecimalType::class)
-            ->add('categories_id', ChoiceType::class,[
-
-            ])
-            ->add('productPrice', ChoiceType::class,['choices'=>$this->getChoices()], null, [
+            ->add('productPrice', null, [
                 'label' => 'Prix du produit'
+            ], DecimalType::class)
+            // ->add('productPrice', ChoiceType::class,[
+
+            // ])
+            ->add('categories', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'categoryName',
+                'multiple' => false
             ])
             ->add('Image')
             // ->add('slug')
@@ -44,14 +49,19 @@ class ProductType extends AbstractType
         ]);
     }
 
-    private function getCategoriesChoices(Category $category)
-    {
-        $getcategories = 
-        $output = [];
-        foreach($getcategories as $k=>$v){
+    // public function __construct (Category $category){
+    //     $this->category = $category;
+    // }
 
-        }
-    }
+    // private function getCategoriesChoices()
+    // {
+    //     $getcategories = $this->category->getCategoryName();
+    //     $output = [];
+    //     foreach($getcategories as $k=>$v){
+    //         $output[$v] = $k;
+    //     }
+    //     return $output;
+    // }
     // private function getChoices()
     // {
     //     $choices = Product::PRICE;

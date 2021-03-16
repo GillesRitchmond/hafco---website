@@ -40,8 +40,6 @@ class Product
 
     /**
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
-     * @Assert\Type("decimal")
-     * @Assert\Regex("/^[0-9]$")
      */
     private $productPrice;
 
@@ -53,13 +51,12 @@ class Product
     /**
      * @var string
      * @Gedmo\Slug(fields={"productName"})
-     * 
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $slug;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $categories;

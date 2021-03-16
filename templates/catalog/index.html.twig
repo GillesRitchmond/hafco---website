@@ -21,11 +21,14 @@
                         {# MENU DEROULANT POUR LES CATEGORIES #}
 
                                         <div class="col-2 col-sm-3 form-row">
-                                            <button type="button" class="input-group-btn btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
+                                            {# <button type="button" class="input-group-btn btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
                                                 <span class="glyphicon glyphicon-search"></span>
                                                 <span class="label-icon">Catégories</span>
                                                 <span class="caret"></span>
-                                            </button>
+                                            </button> #}
+                                            <div class="">
+                                                {{form_row(form.categoriesName)}}
+                                            </div>
                                         </div>
 
                         {# CHAMP DE SAISIE #}
