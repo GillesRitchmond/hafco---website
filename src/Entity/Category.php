@@ -35,6 +35,7 @@ class Category
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="categories")
      */
     private $products;
+    
 
     /**
      * @ORM\OneToMany(targetEntity=SubCategory::class, mappedBy="category")

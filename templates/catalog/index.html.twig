@@ -6,7 +6,7 @@
 
     <div class="body-hafco">
 
-        <div class="banner">
+        <div class="banner bg-catalog">
             <div class="content container">
                 <div class="text-width">
 
@@ -20,25 +20,29 @@
                                     <div class="row">
                         {# MENU DEROULANT POUR LES CATEGORIES #}
 
-                                        <div class="col-2 col-sm-3 form-row">
-                                            {# <button type="button" class="input-group-btn btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
+                                        {# <div class="col-2 col-sm-3 form-row">
+                                            <button type="button" class="input-group-btn btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
                                                 <span class="glyphicon glyphicon-search"></span>
                                                 <span class="label-icon">Catégories</span>
                                                 <span class="caret"></span>
-                                            </button> #}
+                                            </button>
                                             <div class="">
                                                 {{form_row(form.categoriesName)}}
                                             </div>
-                                        </div>
+                                        </div> #}
 
                         {# CHAMP DE SAISIE #}
                                         
 
                                         {# <input type="text" class="form-control" placeholder="Exemple : Fournitures de bureau" {{(form.productName)}}/> #}
-                                       
-                                        <div class="col-9 col-md-9 form-row search-field">
+
+                                        <div class="col-9 col-lg form-row search-field">
                                             {{form_row(form.productName)}}
                                         </div>
+
+                                        {# <div class="col-9 col-md-9 form-row search-field">
+                                            {{form_row(form.productName)}}
+                                        </div> #}
 
                         {# BOUTON DE VALIDATION DE LA RECHERCHE #}
                                         <div class="">
@@ -69,8 +73,34 @@
 
                         <div class="category">Catégories de produits</div>
                         <hr>
+                        <ul class="list-group list-group-flush">
+
+                            {% for category in categories %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <a class="categ-name secondary" href="#">{{category.categoryName}}</a>
+                                    <span class="badge nav-item dropdown"> 
+                                        <a href="#submenu1sub1" class="nav-link collapsed py-1 dropdown-toggle secondary plus" data-bs-toggle="dropdown"  role="button" aria-expanded="false" >
+                                        </a> 
+                                        <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                                            <ul class="dropdown-menu flex-column nav pl-4">
+                                                <li class="nav-item">
+                                                    <a class="dropdown-item" href="#">Action</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="dropdown-item" href="#">Something else here</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </span>
+                                </li>
+                            {% endfor %}
+                            </ul>
                     </div>
                 </div>
+
 
                 <div class="col-sm-6 col-md-9">
                     <div class="p-3 border bg-light">

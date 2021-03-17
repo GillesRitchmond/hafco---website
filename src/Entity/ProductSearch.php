@@ -10,10 +10,10 @@ Class ProductSearch{
      */
     private $productName;
 
-    /**
-     * @var ArrayCollection
-     */
-    private $categoriesName;
+    // /**
+    //  * @var ArrayCollection
+    //  */
+    // private $categoriesName;
     
 
     
@@ -29,37 +29,37 @@ Class ProductSearch{
         return $this;
     }
 
-    public function __construct()
-    {
-        $this->categoriesName = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->categoriesName = new ArrayCollection();
+    // }
 
-    /**
-     * @@return ArrayCollection
-     */
-    public function getCategoriesName(): ArrayCollection
-    {
-        return $this->categoriesName;
-    }
+    // /**
+    //  * @@return ArrayCollection
+    //  */
+    // public function getCategoriesName(): ArrayCollection
+    // {
+    //     return $this->categoriesName;
+    // }
 
-    /**
-     * @param ArrayCollection $categoriesName
-     */
-    public function setCategoriesName(ArrayCollection $categoriesName): void
-    {
-        $this->categoriesName = $categoriesName;
+    // /**
+    //  * @param ArrayCollection $categoriesName
+    //  */
+    // public function setCategoriesName(ArrayCollection $categoriesName): void
+    // {
+    //     $this->categoriesName = $categoriesName;
 
-    }
+    // }
 
-    public function getCategories(): ?category
-    {
-        return $this->categories;
-    }
+    // public function getCategories(): ?category
+    // {
+    //     return $this->categories;
+    // }
 
-    public function setCategories(?category $categories): self
-    {
-        $this->categories = $categories;
+    // public function setCategories(?category $categories): self
+    // {
+    //     $this->categories = $categories;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

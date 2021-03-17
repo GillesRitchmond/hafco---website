@@ -2,6 +2,19 @@ body{
     font-size:16px;
     font-family: 'Roboto', sans-serif;
 }
+.plus{
+    text-decoration: none;
+    font-size: medium;
+}
+.categ-name{
+    text-decoration: none;
+}
+.nav-link[data-toggle].collapsed:after {
+    content: " ▾";
+}
+.nav-link[data-toggle]:not(.collapsed):after {
+    content: " ▴";
+}
 
 /**************** BASIC COLOR ***********************/
 .primary{
@@ -159,9 +172,14 @@ nav ul li a:hover{
 /**************** PRODUCTS PAGE ***********************/
 
 /**************** BANNER ***********************/
-
+.bg-catalog{
+    background-image: url('../images/home-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .banner{
     background-color: #345282;
+    /* background-image: url('../images/home-banner.png'); */
     height: 350px;
     padding: 5%;
     text-align: center;
@@ -364,6 +382,12 @@ hr{
     width: 100%;
     height: 100%;
 } */
+.third{
+    background-image: url('../images/home-banner.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
 .carousel-item{
     height: 350px;
     width: 100%;
@@ -379,9 +403,9 @@ hr{
     content: url('https://api.iconify.design/fa-angle-right.svg?color=white&height=14&inline=true');
     vertical-align: -0.143em;
 }
-.carousel-control-next{
+/* .carousel-control-next{
     margin-right:  -90px ;
-}
+} */
 .section-content{
     font-size: medium;
 }

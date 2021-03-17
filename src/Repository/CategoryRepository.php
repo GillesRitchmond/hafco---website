@@ -28,7 +28,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function findAllCategories(): array
     {
         return $this->createQueryBuilder('p')
-            ->where('p.productPrice = 2000')
+            ->where('p.productPrice > 0')
             ->getQuery()
             ->getResult()
         ;

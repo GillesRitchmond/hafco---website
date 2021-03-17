@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Contact;
 use App\Entity\Product;
 use App\Entity\ProductSearch;
+use App\Form\ContactType;
 use App\Form\ProductSearchType;
+use App\Notification\ContactNotification;
+use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -24,15 +28,22 @@ class CatalogController extends AbstractController
     private $repository;
 
     /**
+     * @var CategoryRepository
+     */
+
+    private $categoryrepository;
+
+    /**
      * @var EntityManagerInterface
      */
 
     private $em;
 
+    
 
-
-    public function __construct (ProductRepository $repository, EntityManagerInterface $em){
+    public function __construct (ProductRepository $repository, CategoryRepository $categoryRepository, EntityManagerInterface $em){
         $this->repository = $repository;
+        $this->categoryRepository = $categoryRepository;
         $this->repository = $em;
     }
 
@@ -42,8 +53,10 @@ class CatalogController extends AbstractController
      * @Route("/catalog", name="catalog")
      * @return Response
      */
-    public function index(PaginatorInterface $paginatorInterface, Request $request, ProductRepository $repository): Response
+    public function index(PaginatorInterface $paginatorInterface, Request $request, ProductRepository $repository, CategoryRepository $categoryRepository): Response
     {
+        $categories = $categoryRepository->findAll();
+
         $search = new ProductSearch();
         $form = $this->createForm(ProductSearchType::class, $search);
         $form->handleRequest($request);
@@ -59,6 +72,7 @@ class CatalogController extends AbstractController
         return $this->render('catalog/index.html.twig', [
             'controller_name' => 'CatalogController',
             'products' => $products,
+            'categories' => $categories,
             'form' =>$form->createView()
         ]);
         
@@ -67,17 +81,11 @@ class CatalogController extends AbstractController
     /**
      * @Route("/catalogue/{slug}-{id}", name="product.show", requirements={"slug": "[A-Za-z0-9\-]*"})
      * @return Response
+     * @param Product $product
      */
-    public function show(Product $products, string $slug, int $id): Response
+    public function show(Product $products, string $slug, int $id, Request $request, ContactNotification $notification): Response
     {
-        // if ($products->getSlug()) !== $slug)
-        // {
-        //     return $this->redirectToRoute('product.show',[
-        //         'id' => $products->getId(),
-        //         'slug' => $products->getSlug()
-        //     ], 301);
-        // }
-
+        
         $product = $this->getDoctrine()
             ->getRepository(Product::class)
             ->find($id);
@@ -92,14 +100,34 @@ class CatalogController extends AbstractController
             throw $this->createNotFoundException(
                 'No product found for id '.$id
             );
+
         }
+
+
+        $contact = new Contact();
+        $contact->setProduct($product);
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {   
+            $notification->notify($contact);
+            $this->addFlash('success','Votre message a été envoyer avec succès');
+            return $this->redirectToRoute('product.show',[
+                'id' => $products->getId(),
+                'slug' => $products->getSlug()
+            ]);
+        }
+
+        
         // return new Response('Check out this great product: '.$product->getName());
 
 
         //$product = $this->repository->find($id);
         return $this->render('catalog/show.html.twig', [
             'controller_name' => 'CatalogController',
-            'product' => $product
+            'product' => $product,
+            'form' => $form->createView()
         ]);
     }
 }
