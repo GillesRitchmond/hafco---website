@@ -142,7 +142,7 @@ class Contact{
      * @param Product|null $product
      * @return Contact
      */
-    public function setProduct(?string $product): Contact
+    public function setProduct(?Product $product): Contact
     {
         $this->product = $product;
         return $this;

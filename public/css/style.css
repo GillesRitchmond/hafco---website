@@ -214,7 +214,8 @@ nav ul li a:hover{
     margin-right: -100px;
 } */
 .form-control{
-    border-radius: 30px 30px;
+    /* border-radius: 30px; */
+    margin: 0 auto;
 }
 .col-md-12 .input-group .btn .btn-primary{
     border-style: none;

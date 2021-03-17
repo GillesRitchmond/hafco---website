@@ -30,17 +30,21 @@
         </div>
         
         <div class="bg-light mt-4" id="contactForm">
+            <h3>Ecrivez-nous par email</h3>
+            <hr>
             {{ form_start(form) }}
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col">{{form_row(form.firstname)}}</div>
                     <div class="col">{{form_row(form.lastname)}}</div>
                 </div>
-                <div class="row">
+                <div class="row mt-4">
                     <div class="col">{{form_row(form.phone)}}</div>
                     <div class="col">{{form_row(form.email)}}</div>
                 </div>
-            {{ form_rest(form) }}
-                <div class="form-group">
+                <div class="row mt-4">
+                    {{ form_rest(form) }}
+                </div>
+                <div class="form-group mt-4">
                     <button class="btn btn-primary form_btn"> Envoyer </button> 
                 </div>
             {{ form_end(form) }}

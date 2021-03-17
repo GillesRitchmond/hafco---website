@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -31,7 +32,7 @@ class ContactType extends AbstractType
             ], TextType::class)
             ->add('message', null,[
                 'label' => 'Message',
-                'placeholder' => 'Tapez votre message',
+                // 'placeholder' => 'Tapez votre message',
                 'required' => true
             ], TextAreaType::class)
         ;
@@ -40,7 +41,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Contact::class,
+            'data_class' => Contact::class
         ]);
     }
 }
