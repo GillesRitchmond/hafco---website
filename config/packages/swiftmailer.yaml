@@ -1,3 +1,13 @@
 swiftmailer:
     url: '%env(MAILER_URL)%'
     spool: { type: 'memory' }
+    # delivery_addresses: ['gritchmond@gmail.com']
+    delivery_addresses: ['contact@hafcomeubles.com']
+    # use this to disable email delivery
+    # MAILER_URL=smtp://localhost:1025 
+
+    # use this to configure a traditional SMTP server
+    #MAILER_URL=smtp://localhost:465?encryption=ssl&auth_mode=login&username=&password=
+
+    # username is your full Gmail or Google Apps email address
+    #MAILER_URL= gmail://root:root@localhost

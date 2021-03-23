@@ -6,6 +6,10 @@ body{
     text-decoration: none;
     font-size: medium;
 }
+.card-img-top{
+    height: auto;
+    width: 100%;
+}
 .categ-name{
     text-decoration: none;
 }
@@ -268,7 +272,16 @@ nav ul li a:hover{
 
 
 /**************** FOR EACH PRODUCT PAGE  ***********************/
-
+/* .bordered{
+    border:#345282;
+    border-style: solid;
+    border-width: medium;
+    width:max-content;
+} */
+.img-prod-show{
+    height: auto; 
+    width: 100%;   
+}
 .card-title{
     font-weight: bold;
 }
@@ -279,7 +292,7 @@ nav ul li a:hover{
     padding: 30px;
 }
 .product-details{
-    text-align:start;
+    text-align: start;
 }
 .product-details h1{
     color:#345282;
@@ -289,6 +302,20 @@ nav ul li a:hover{
 .product-details p{
     text-align: justify;
     font-size: medium;
+}
+.form-btn{
+    background-color: none;
+    border-color: #345282;
+    border-style: solid;
+    border-width: medium;
+    color:#345282;
+}
+.form-btn:hover{
+    background-color: #345282;
+    color: #FFF;
+    border-color: #345282;
+    border-style: solid;
+    border-width: medium;
 }
 .whatsapp-btn{
     background-color: #dcf8c6;
@@ -307,7 +334,7 @@ nav ul li a:hover{
 }
 .price{
     font-weight: 300;
-    font-size: x-large;
+    font-size: larger;
     color: #345282;
 }
 .link{

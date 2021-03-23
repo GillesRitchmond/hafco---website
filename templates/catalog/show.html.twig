@@ -5,16 +5,17 @@
 {% block body %}
     <div class="container product">
         <div class="row bg-light">
-            <div class="col-sm">
-                        {# {{product.image}} #}
-                        <img src="{{product.image}}" height="100%" width="100%"/>
-                    </div>
+            <div class="col-sm bordered">
+                {# {{product.image}} #}
+                <img src="{{product.image}}" class="img-prod-show"/>
+            </div>
             <div class="col-sm">
             
                 <div class="product-details">
                     <h1>{{product.productName}}</h1>
+                    <hr>
                     <p> {{product.productDescription}}</p>
-                    <span class="price">{{product.productPrice}} HTG</span>
+                    <span class="price"> Prix : {{product.productPrice}} HTG</span>
                 </div>
 
                 <div class="product-details">
@@ -22,9 +23,13 @@
                     <div class="message-btn btn">
                         <a class="btn whatsapp-btn" href="#">Ecrivez nous sur whatsapp</a>
                         <br/><br/>
-                        <a class="link" href="{{path ('catalog')}}">Retournez à la liste des produits</a>
                     </div>
-                    
+
+                    <div class="message-btn btn">
+                        <a class="btn form-btn" href="#">Formulaire d'informations</a>
+                        <br/><br/>
+                    </div>
+                    <a class="link" href="{{path ('catalog')}}">Retournez à la liste des produits</a>
                 </div>
             </div>
         </div>

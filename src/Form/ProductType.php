@@ -32,7 +32,7 @@ class ProductType extends AbstractType
             ], DecimalType::class)
             ->add('imageFile', FileType::class,[
                 'required' => true
-            ])
+            ])  
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'categoryName',
