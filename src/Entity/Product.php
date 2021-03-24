@@ -33,6 +33,8 @@ class Product
      /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File|null
+     * @Assert\Image(
+     *  mimeTypes="image/jpgyes")
      */
     private $imageFile;
 

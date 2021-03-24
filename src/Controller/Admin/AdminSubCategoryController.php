@@ -27,13 +27,22 @@ class AdminSubCategoryController extends AbstractController
 
     /**
      * @Route("/admin-subcategory-list", name="admin-subcategory")
+     * @return Response
      */
-    public function index(SubCategoryRepository $repository, PaginatorInterface $paginatorInterface): Response
+    public function index(SubCategoryRepository $repository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
         $subcategories = $repository->findAll();
+        
+        $subcategory = $paginatorInterface->paginate(
+            $subcategories,
+            $request->query->getInt('page', 1), 
+            20
+        );
+
         return $this->render('admin_subcategory/index.html.twig', [
             'controller_name' => 'AdminSubCategoryController',
-            'subcategories' => $subcategories
+            'subcategories' => $subcategories,
+            'subcategory' => $subcategory
         ]);
     }
 

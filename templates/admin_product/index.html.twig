@@ -10,6 +10,17 @@
                         <h2> Liste des produits </h2>
                     </li>
                     <li>
+                        {{form_start(form, {'method': 'GET'})}}
+                            <div class="col-md-12 form-row search-field">
+                                <ul>
+                                    <li>{{form_row(form.productName)}}<li>
+                                    <li><button class="btn btn-secondary mx-1"> Rechercher</button></li>
+                                </ul>
+                            </div>
+                            
+                        {{form_end(form)}}
+                    </li>
+                    <li>
                         <a href="{{path ('admin.product.new')}}" class="btn btn-primary">Ajouter un nouveau produit</a>
                     </li>
                 </ul>
@@ -63,6 +74,12 @@
                         {% endfor %}
                     </tbody>
                 </table>
+
+                <div aria-label="navigation" class="bg-light">
+                                        
+                    {{ knp_pagination_render(products) }}
+                                        
+                </div>
             </div>
             
         </div>

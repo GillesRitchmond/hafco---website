@@ -5,8 +5,11 @@ namespace App\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\ProductRepository;
 use App\Entity\Product;
+use App\Entity\ProductSearch;
+use App\Form\ProductSearchType;
 use App\Form\ProductType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,13 +29,27 @@ class AdminProductController extends AbstractController
 
     /**
      * @Route("/admin", name="admin-product")
+     * @
      */
-    public function index(ProductRepository $repository): Response
+    public function index(ProductRepository $repository, PaginatorInterface $paginatorInterface, Request $request): Response
     {
-        $products = $repository->findAll();
+        // $products = $repository->findAll();
+
+        $search = new ProductSearch();
+        $form = $this->createForm(ProductSearchType::class, $search);
+        $form->handleRequest($request);
+
+
+        $products = $paginatorInterface->paginate(
+            $repository->findAllVisibleQuery($search),
+            $request->query->getInt('page', 1), 
+            12
+        );
+
         return $this->render('admin_product/index.html.twig', [
             'controller_name' => 'AdminProductController',
-            'products' => $products
+            'products' => $products,
+            'form' =>$form->createView()
         ]);
     }
 
