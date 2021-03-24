@@ -29,19 +29,21 @@ class Product
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank(message="Upload your image")
-     * @var string|null
-     */
-    private $image;
 
-    /**
+     /**
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File|null
      */
     private $imageFile;
 
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @var string|null
+     */
+    private $image;
+
+   
     /**
      * @ORM\Column(type="datetime")
      * @var \DateTimeInterface|null

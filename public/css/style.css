@@ -6,10 +6,6 @@ body{
     text-decoration: none;
     font-size: medium;
 }
-.card-img-top{
-    height: auto;
-    width: 100%;
-}
 .categ-name{
     text-decoration: none;
 }
@@ -174,7 +170,11 @@ nav ul li a:hover{
 
 
 /**************** PRODUCTS PAGE ***********************/
-
+.card-img-top{
+    width: 100%;
+    height: 15vw;
+    object-fit: cover;
+}
 /**************** BANNER ***********************/
 .bg-catalog{
     background-image: url('../images/home-banner.png');

@@ -7,6 +7,7 @@ use App\Repository\SubCategoryRepository;
 use App\Entity\SubCategory;
 use App\Form\SubCategoryType;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -27,7 +28,7 @@ class AdminSubCategoryController extends AbstractController
     /**
      * @Route("/admin-subcategory-list", name="admin-subcategory")
      */
-    public function index(SubCategoryRepository $repository): Response
+    public function index(SubCategoryRepository $repository, PaginatorInterface $paginatorInterface): Response
     {
         $subcategories = $repository->findAll();
         return $this->render('admin_subcategory/index.html.twig', [

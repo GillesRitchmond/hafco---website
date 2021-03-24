@@ -5,9 +5,14 @@
 {% block body %}
     <div class="container product">
         <div class="row bg-light">
-            <div class="col-sm bordered">
-                {# {{product.image}} #}
-                <img src="{{product.image}}" class="img-prod-show"/>
+
+            <div class="col-sm">
+                {% if product.image %}
+
+                    <img src="{{ vich_uploader_asset(product, 'imageFile')}}" style="width:100%; height:50vw;" >
+
+                {% endif %}
+                {# <img src="{{product.image}}" class="img-prod-show"/> #}
             </div>
             <div class="col-sm">
             
@@ -31,10 +36,8 @@
                     </div>
                     <a class="link" href="{{path ('catalog')}}">Retournez à la liste des produits</a>
                 </div>
-            </div>
-        </div>
-        
-        <div class="bg-light mt-4" id="contactForm">
+
+                <div class="bg-light mt-4" id="contactForm">
             <h3>Ecrivez-nous par email</h3>
             <hr>
             {{ form_start(form) }}
@@ -54,6 +57,10 @@
                 </div>
             {{ form_end(form) }}
         </div>
+            </div>
+        </div>
+        
+        
 
     </div>
 {% endblock %}

@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProductType extends AbstractType
 {
@@ -30,7 +31,7 @@ class ProductType extends AbstractType
             ->add('productPrice', null, [
                 'label' => 'Prix du produit'
             ], DecimalType::class)
-            ->add('imageFile', FileType::class,[
+            ->add('imageFile', VichImageType::class,[
                 'required' => true
             ])  
             ->add('categories', EntityType::class, [
