@@ -1,32 +1,48 @@
-{% extends 'base.html.twig' %}
+{% extends '/base.html.twig' %}
 
 {% block title %}HAFCO-Catalogue{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+{% endblock %}
+
+{% block javascripts %} 
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
 
 {% block body %}
     <div class="container product">
-        <div class="row bg-light">
+        <div class="row g-0 bg-light position-relative">
 
-            <div class="col-sm">
+            <div class="col-md-6 mb-md-0 p-md-4">
                 {% if product.image %}
 
-                    <img src="{{ vich_uploader_asset(product, 'imageFile')}}" style="width:100%; height:50vw;" >
+                    <img src="{{ vich_uploader_asset(product, 'imageFile')}}" class="w-100" style="width:100%; height:auto;" >
 
                 {% endif %}
                 {# <img src="{{product.image}}" class="img-prod-show"/> #}
             </div>
-            <div class="col-sm">
+            <div class="col-md-6 p-4 ps-md-0">
             
                 <div class="product-details">
                     <h1>{{product.productName}}</h1>
                     <hr>
                     <p> {{product.productDescription}}</p>
                     <span class="price"> Prix : {{product.productPrice}} HTG</span>
+                    {% if product.productPrice == 0 %}
+                        <p class="text-muted mt-2">
+                                <i class="fas fa-exclamation-circle"></i>
+                                Il n'y a pas de prix précis pour ce genre de produits. 
+                            <br/> Veuillez nous contacter pour un devis
+                        </p>
+                    {% endif %}
                 </div>
 
                 <div class="product-details">
                    
                     <div class="message-btn btn">
-                        <a class="btn whatsapp-btn" href="#">Ecrivez nous sur whatsapp</a>
+                        <a class="btn whatsapp-btn" href="https://wa.me/message/CHRWTAHNTEOOB1">Ecrivez nous sur whatsapp</a>
                         <br/><br/>
                     </div>
 
@@ -34,10 +50,13 @@
                         <a class="btn form-btn" href="#">Formulaire d'informations</a>
                         <br/><br/>
                     </div>
-                    <a class="link" href="{{path ('catalog')}}">Retournez à la liste des produits</a>
+                    <a class="link ms-1" href="{{path ('catalog')}}">Retournez à la liste des produits</a>
                 </div>
 
-                <div class="bg-light mt-4" id="contactForm">
+            </div>
+        </div>
+
+         <div class="bg-light mt-4" id="contactForm">
             <h3>Ecrivez-nous par email</h3>
             <hr>
             {{ form_start(form) }}
@@ -57,10 +76,8 @@
                 </div>
             {{ form_end(form) }}
         </div>
-            </div>
-        </div>
-        
-        
 
     </div>
+
 {% endblock %}
+

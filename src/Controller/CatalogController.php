@@ -115,7 +115,7 @@ class CatalogController extends AbstractController
             $this->addFlash('success','Votre message a été envoyer avec succès');
             return $this->redirectToRoute('product.show',[
                 'id' => $products->getId(),
-                'slug' => $products->getSlug()
+                'slug' => $products->getSlug(),
             ]);
         }
 

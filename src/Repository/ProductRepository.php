@@ -63,7 +63,7 @@ class ProductRepository extends ServiceEntityRepository
     public function findLatest(): array
     {
         return $this->createQueryBuilder('p')
-        ->setMaxResults(10)
+        ->setMaxResults(12)
         ->getQuery()
         ->getResult();
     }

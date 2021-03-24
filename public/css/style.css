@@ -168,6 +168,20 @@ nav ul li a:hover{
     text-decoration: underline;
 }
 
+@media screen and (max-width: 767px){
+    .footer{
+        padding: 10px;
+    }
+    .footer-content{
+        margin-top: 40px;
+    }
+    .contact{
+        margin-left: -20px;
+    }
+    .contact li{
+        width: 250px;
+    }   
+}
 
 /**************** PRODUCTS PAGE ***********************/
 .card-img-top{
@@ -302,6 +316,9 @@ nav ul li a:hover{
 .product-details p{
     text-align: justify;
     font-size: medium;
+}
+.link{
+    margin-left: 10px;
 }
 .form-btn{
     background-color: none;

@@ -115,7 +115,10 @@
                         <tbody>
                           <tr>
                             <td style="width:100px;">
-                              <img height="auto" src="{{'images/group4@2x.png'}}" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" />
+                            {% if contact.product.image %}
+                              {# <img height="auto" src="{{'images/group4@2x.png'}}" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" /> #}
+                              <img height="auto" src="{{ vich_uploader_asset(contact.product, 'imageFile')}}" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" />
+                            {% endif %}
                             </td>
                           </tr>
                         </tbody>

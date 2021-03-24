@@ -34,7 +34,7 @@ class Product
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File|null
      * @Assert\Image(
-     *  mimeTypes="image/jpgyes")
+     *  mimeTypes="image/jpeg")
      */
     private $imageFile;
 
@@ -51,31 +51,7 @@ class Product
      * @var \DateTimeInterface|null
      */
     private $updatedAt;
-    
-    //  /**
-    //  * NOTE: This is not a mapped field of entity metadata, just a simple property.
-    //  * 
-    //  * @Vich\UploadableField(mapping="product_image", fileNameProperty="Image", size="imageSize")
-    //  * 
-    //  * @var File|null
-    //  */
-    // private $imageFile;
-
-    // // /**
-    // //  * @ORM\Column(type="string")
-    // //  *
-    // //  * @var string|null
-    // //  */
-    // // private $imageName;
-
-    // /**
-    //  * @ORM\Column(type="string", length=255, nullable=true)
-    //  * @Assert\NotBlank(message="Upload your image")
-    //  * @var string|null
-    //  */
-    // private $image;
-
-
+  
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Type("string")
@@ -164,17 +140,6 @@ class Product
         return $this;
     }
 
-    // public function getImage(): ?string
-    // {
-    //     return $this->Image;
-    // }
-
-    // public function setImage(?string $Image): self
-    // {
-    //     $this->Image = $Image;
-
-    //     return $this;
-    // }
 
     public function getCategories(): ?category
     {
@@ -211,32 +176,6 @@ class Product
         return $this->imageFile;
     }
 
-
-    // /**
-    //  * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-    //  * of 'UploadedFile' is injected into this setter to trigger the update. If this
-    //  * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-    //  * must be able to accept an instance of 'File' as the bundle will inject one here
-    //  * during Doctrine hydration.
-    //  *
-    //  * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile
-    //  */
-    // public function setImageFile(?File $imageFile = null): void
-    // {
-    //     $this->imageFile = $imageFile;
-
-    //     if (null !== $imageFile) {
-    //         // It is required that at least one field changes if you are using doctrine
-    //         // otherwise the event listeners won't be called and the file is lost
-    //         $this->updatedAt = new \DateTimeImmutable();
-    //     }
-    // }
-
-    // public function getImageFile(): ?File
-    // {
-    //     return $this->imageFile;
-    // }
-
     public function setImage($image)
     {
         $this->image = $image;
@@ -246,15 +185,5 @@ class Product
     {
         return $this->image;
     }
-
-    // public function setImage(?string $image): void
-    // {
-    //     $this->image = $image;
-    // }
-
-    // public function getImage(): ?string
-    // {
-    //     return $this->image;
-    // }
 
 }

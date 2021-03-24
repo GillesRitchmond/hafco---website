@@ -158,6 +158,26 @@
                     
                     <div class="product-content">
                         <div class="row flex">
+
+                            {% for product in products %}
+                                <div class="col-sm p-1">
+                                    <a href="{{ path('product.show', {id: product.id, slug: product.slug}) }}">
+                                        <img src="{{ vich_uploader_asset(product, 'imageFile')}}" style="height:250px; width:250px; object-fit: cover;"alt=""/>
+                                    </a>
+                                    {# {{ product.image}} #}
+                                </div>
+                            {% endfor %}
+                            {# <div class="col-sm p-1">
+                                <img src="http://placehold.it/330x260" alt=""/>
+                            </div>
+                            <div class="col-sm p-1">
+                                <img src="http://placehold.it/330x260" alt=""/>
+                            </div>
+                            <div class="col-sm p-1">
+                                <img src="http://placehold.it/330x260" alt=""/>
+                            </div>
+                            
+                        
                             <div class="col-sm p-1">
                                 <img src="http://placehold.it/330x260" alt=""/>
                             </div>
@@ -168,9 +188,7 @@
                                 <img src="http://placehold.it/330x260" alt=""/>
                             </div>
                             
-                        {# </div>
-
-                        <div class="row"> #}
+                       
                             <div class="col-sm p-1">
                                 <img src="http://placehold.it/330x260" alt=""/>
                             </div>
@@ -180,9 +198,7 @@
                             <div class="col-sm p-1">
                                 <img src="http://placehold.it/330x260" alt=""/>
                             </div>
-                            
-                        {# </div>
-                        <div class="row"> #}
+                        
                             <div class="col-sm p-1">
                                 <img src="http://placehold.it/330x260" alt=""/>
                             </div>
@@ -191,19 +207,7 @@
                             </div>
                             <div class="col-sm p-1">
                                 <img src="http://placehold.it/330x260" alt=""/>
-                            </div>
-                        {# </div>
-
-                        <div class="row"> #}
-                            <div class="col-sm p-1">
-                                <img src="http://placehold.it/330x260" alt=""/>
-                            </div>
-                            <div class="col-sm p-1">
-                                <img src="http://placehold.it/330x260" alt=""/>
-                            </div>
-                            <div class="col-sm p-1">
-                                <img src="http://placehold.it/330x260" alt=""/>
-                            </div>
+                            </div> #}
                         </div>
                     
                         <div class="more-link"><a href="#">Voir plus</a></div>

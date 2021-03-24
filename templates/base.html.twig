@@ -14,11 +14,13 @@
             300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
            <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
+           
+
         {% block stylesheets %}
            {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
             <script src="https://kit.fontawesome.com/c32e345056.js" crossorigin="anonymous"></script>
-            <link rel="stylesheet" href="{{'css/style.css'}}"/>
+            <link rel="stylesheet" href="{{asset('css/style.css')}}"/>
 
 
         {% block javascripts %} 
