@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Contact;
 use App\Entity\Product;
+use App\Entity\ProductByCategory;
 use App\Entity\ProductSearch;
 use App\Form\ContactType;
+use App\Form\ProductByCategoryForm;
 use App\Form\ProductSearchType;
 use App\Notification\ContactNotification;
 use App\Repository\CategoryRepository;
@@ -55,28 +58,27 @@ class CatalogController extends AbstractController
      */
     public function index(PaginatorInterface $paginatorInterface, Request $request, ProductRepository $repository, CategoryRepository $categoryRepository): Response
     {
-        $categories = $categoryRepository->findAll();
+        //$categories = $categoryRepository->findAll();
 
         $search = new ProductSearch();
         $form = $this->createForm(ProductSearchType::class, $search);
         $form->handleRequest($request);
-
-
+        
         $products = $paginatorInterface->paginate(
             $repository->findAllVisibleQuery($search),
             $request->query->getInt('page', 1), 
             12
         );
-       
 
         return $this->render('catalog/index.html.twig', [
             'controller_name' => 'CatalogController',
             'products' => $products,
-            'categories' => $categories,
-            'form' =>$form->createView()
+            // 'categories' => $categories,
+            'form' => $form->createView()
         ]);
         
     }
+
 
     /**
      * @Route("/catalogue/{slug}-{id}", name="product.show", requirements={"slug": "[A-Za-z0-9\-]*"})

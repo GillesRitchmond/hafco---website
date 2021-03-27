@@ -10,10 +10,16 @@ Class ProductSearch{
      */
     private $productName;
 
+    
+    /**
+     * @var ArrayCollection
+     */
+    private $categories;
+
     // /**
     //  * @var ArrayCollection
     //  */
-    // private $categoriesName;
+    // private $subcategories;
     
 
     
@@ -29,37 +35,42 @@ Class ProductSearch{
         return $this;
     }
 
-    // public function __construct()
+    public function __construct()
+    {
+        $this->categories = new ArrayCollection();
+        // $this->subcategories = new ArrayCollection();
+    }
+
+ 
+    /**
+     * @return ArrayCollection
+     */
+    public function getCategories(): ArrayCollection
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param ArrayCollection $categories
+     */
+    public function setCategories(ArrayCollection $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+    // /**
+    //  * @return ArrayCollection
+    //  */
+    // public function getSubCategories(): ArrayCollection
     // {
-    //     $this->categoriesName = new ArrayCollection();
+    //     return $this->subcategories;
     // }
 
     // /**
-    //  * @@return ArrayCollection
+    //  * @param ArrayCollection $subcategories
     //  */
-    // public function getCategoriesName(): ArrayCollection
+    // public function setSubCategories(ArrayCollection $subcategories): void
     // {
-    //     return $this->categoriesName;
-    // }
-
-    // /**
-    //  * @param ArrayCollection $categoriesName
-    //  */
-    // public function setCategoriesName(ArrayCollection $categoriesName): void
-    // {
-    //     $this->categoriesName = $categoriesName;
-
-    // }
-
-    // public function getCategories(): ?category
-    // {
-    //     return $this->categories;
-    // }
-
-    // public function setCategories(?category $categories): self
-    // {
-    //     $this->categories = $categories;
-
-    //     return $this;
+    //     $this->subcategories = $subcategories;
     // }
 }

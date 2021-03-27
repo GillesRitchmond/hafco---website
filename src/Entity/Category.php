@@ -48,13 +48,13 @@ class Category
         $this->subCategories = new ArrayCollection();
     }
 
-    // /**
-    //  * @var string
-    //  * @Gedmo\Slug(fields={"categoryName"})
-    //  * 
-    //  * @ORM\Column(type="string", length=255, nullable=true)
-    //  */
-    // private $slug;
+    /**
+     * @var string
+     * @Gedmo\Slug(fields={"CategoryName"})
+     * 
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -85,18 +85,18 @@ class Category
         return $this;
     }
 
-    // public function getSlug(): ?string
-    // {
-    //     //return (new Slugify())->slugify($this->productName);
-    //     return $this->slug;
-    // }
+    public function getSlug(): ?string
+    {
+        //return (new Slugify())->slugify($this->productName);
+        return $this->slug;
+    }
 
-    // public function setSlug(string $slug): self
-    // {
-    //     $this->slug = $slug;
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
-    //     return $this;
-    // } 
+        return $this;
+    } 
 
     /**
      * @return Collection|Product[]
@@ -156,5 +156,10 @@ class Category
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->CategoryName;
     }
 }

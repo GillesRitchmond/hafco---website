@@ -2,8 +2,11 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Product;
+use App\Entity\ProductByCategory;
 use App\Entity\ProductSearch;
+use App\Form\ProductByCategoryForm;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\Query\QueryBuilder;
 use Doctrine\Migrations\Query\Query as QueryQuery;
@@ -39,20 +42,54 @@ class ProductRepository extends ServiceEntityRepository
         ;
     }
 
+    // /**
+    //  * @return Query
+    //  */
+    // public function findAllVisibleQuery(ProductSearch $search): Query
+    // {
+        
+    //     $query = $this->findVisibleQuery();
+
+    //     if($search->getProductName()){
+    //         $query = $query
+    //             ->where('p.productName LIKE :name')
+    //             ->setParameter('name', '%'.$search->getProductName().'%');
+    //     }
+        
+    //     if (!empty($search->categories)) {
+    //         $query = $query
+    //             ->andWhere('c.id IN (:categories)')
+    //             ->setParameter('categories', $search->categories);
+    //     }
+
+    //     return $query->getQuery();
+    // }
+
     /**
-     * @return Query
+     * Pour récupérer les produits avec une recherche
+     * @return Product[]
      */
-    public function findAllVisibleQuery(ProductSearch $search): Query
+    public function findAllVisibleQuery(ProductSearch $search): array
     {
         
-        $query = $this->findVisibleQuery();
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c', 'p')
+            ->join('p.categories', 'c');
+
 
         if($search->getProductName()){
             $query = $query
                 ->where('p.productName LIKE :name')
                 ->setParameter('name', '%'.$search->getProductName().'%');
         }
-        return $query->getQuery();
+
+        if(!empty($search->getCategories())){
+            $query = $query 
+                ->andWhere('p.categories IN (:categories)')
+                ->setParameter('categories', $search->getCategories());
+        }
+       return $query->getQuery()->getResult();
     }
 
 
@@ -80,7 +117,26 @@ class ProductRepository extends ServiceEntityRepository
     public function findVisibleQuery(): ORMQueryBuilder
     {
         return $this->createQueryBuilder('p')
-            ->where('p.productPrice >= 0');
+            ->select('p');
+    }
+
+    /**
+     * @return Product[]
+     */
+    public function findProductByCategory(ProductByCategory $productByCategory): array
+    {
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c', 'p')
+            ->join('p.categories', 'c');
+
+            if(!empty($productByCategory->categories)){
+                $query = $query 
+                    ->andWhere('c.id IN (:categories)')
+                    ->setParameter('categories', $productByCategory->categories);
+            }
+
+        return $query->getQuery()->getResult();
     }
 
     // /**

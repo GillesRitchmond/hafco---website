@@ -65,6 +65,31 @@ class CategoryRepository extends ServiceEntityRepository
         return $this->findBy(array(), array('CategoryName' => 'ASC'));
     }
 
+
+//     public function findOneByCategory($id)
+//     {
+//     $query = $this->createQueryBuilder('p');
+
+//         $query->select('p.productName, p.productDescription')
+//             ->from('category', 'product')
+//             ->where('category.id = :id AND product.categories_id = :id')
+//             ->setParameter('id', $id);
+
+//         // echo $query->getSQL(); => Doesn't work... 
+
+//         return $query->getQuery()->getSql();
+    
+//     // return $this->createQueryBuilder('p')
+//     //         ->andWhere('p.exampleField = :val')
+//     //         ->setParameter('val', $value)
+//     //         ->orderBy('p.id', 'ASC')
+//     //         ->setMaxResults(10)
+//     //         ->getQuery()
+//     //         ->getResult()
+//     //     ;
+// }
+
+
     // /**
     //  * @return Category[] Returns an array of Category objects
     //  */

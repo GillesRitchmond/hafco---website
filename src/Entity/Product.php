@@ -15,11 +15,6 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
  */
 class Product
 {
-    const PRICE = [
-        0 => '10000',
-        1 => '500000',
-        2 => '500000'
-    ];
 
 
     /**
@@ -34,7 +29,7 @@ class Product
      * @Vich\UploadableField(mapping="product_images", fileNameProperty="image")
      * @var File|null
      * @Assert\Image(
-     *  mimeTypes="image/jpeg")
+     *  mimeTypes={"image/jpeg", "image/png", "image/jpg"})
      */
     private $imageFile;
 
@@ -184,6 +179,11 @@ class Product
     public function getImage()
     {
         return $this->image;
+    }
+
+    public function __toString()
+    {
+        return $this->productName;
     }
 
 }

@@ -15,7 +15,7 @@
                     <div class="input-group search">
                        <div class="row search-form">
                        {{form_start(form, {'method': 'GET'})}}
-                            <div class="col-lg-12">
+                            <div class="col-lg-12 search-content">
                                 <div class="row px-12" id="adv-search">
                                     <div class="row">
                         {# MENU DEROULANT POUR LES CATEGORIES #}
@@ -43,7 +43,8 @@
                                         {# <div class="col-9 col-md-9 form-row search-field">
                                             {{form_row(form.productName)}}
                                         </div> #}
-
+                                        
+                        {# {{form_end(form)}} #}
                         {# BOUTON DE VALIDATION DE LA RECHERCHE #}
                                         <div class="">
                                             <button class="btn btn-secondary mt-4"> Rechercher
@@ -56,9 +57,9 @@
                                             </button>
                                         </div>
                                     </div>
-                                    {{form_end(form)}}
+                                    
                                 </div>
-                            </div>
+                            </div> 
                         </div>
                     </div>
                 </div>
@@ -69,48 +70,49 @@
         <div class="container section-content">
             <div class="row g-2">
                 <div class="col-6 col-md-3">
-                    <div class="p-3 border bg-light">
+                    <div class="p-3 border bg-light filter category">
 
                         <div class="category">Catégories de produits</div>
                         <hr>
-                        <ul class="list-group list-group-flush">
+                        {# {{ form_start(formData, {'method': 'GET'}) }} #}
+                            {# {{ form_row(form.categories) }} #}
+                            {# {{ form_rest(formData) }} #}
+                        {# {{ form_end(formData) }} #}
 
-                            {% for category in categories %}
+                        {{form_row(form.categories) }}
+                        
+                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                        {{form_end(form)}}
+
+                        {# <div class="category">Sous-catégories de produits</div>
+                        <hr>
+
+                        {{form_row(form.subcategories) }} #}
+                        
+                        {# <ul class="list-group list-group-flush"> #}
+
+
+                            {# {% for category in categories %}
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <a class="categ-name secondary" href="#">{{category.categoryName}}</a>
-                                    <span class="badge nav-item dropdown"> 
-                                        <a href="#submenu1sub1" class="nav-link collapsed py-1 dropdown-toggle secondary plus" data-bs-toggle="dropdown"  role="button" aria-expanded="false" >
-                                        </a> 
-                                        <div class="collapse" id="submenu1sub1" aria-expanded="false">
-                                            <ul class="dropdown-menu flex-column nav pl-4">
-                                                <li class="nav-item">
-                                                    <a class="dropdown-item" href="#">Action</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="dropdown-item" href="#">Another action</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="dropdown-item" href="#">Something else here</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </span>
+                                    <a class="categ-name secondary" href="{{ path('catalog', {id: category.id, slug: category.slug}) }}">{{category.categoryName}}</a>
+                                    {{form_row(form.categories)}}
                                 </li>
-                            {% endfor %}
-                            </ul>
+                            {% endfor %} #}
+                            {# </ul> #}
                     </div>
                 </div>
 
-
+                 
+                
                 <div class="col-sm-6 col-md-9">
                     <div class="p-3 border bg-light">
                         <div>
                             <div class="category_link">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb bg-light">
-                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        {# <li class="breadcrumb-item"><a href="#">Home</a></li>
                                         <li class="breadcrumb-item"><a href="#">Library</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Data</li> #}
                                     </ol>
                                 </nav>
                             </div>
@@ -129,7 +131,7 @@
                                                 
                                             <div class="card-body">
                                                 <h3 class="card-title"> 
-                                                    {{product.productName}}
+                                                    {{product.productName}} -{{product.categories}}
                                                 </h3>
                                             <hr>
                                                 <p class="card-text">

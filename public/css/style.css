@@ -2,6 +2,11 @@ body{
     font-size:16px;
     font-family: 'Roboto', sans-serif;
 }
+.filter{
+    display: block;
+    position: sticky;
+    top: 120px;
+}
 .plus{
     text-decoration: none;
     font-size: medium;
@@ -282,6 +287,38 @@ nav ul li a:hover{
     .dropdown.dropdown-lg .dropdown-menu {
         min-width: 500px;
     }
+    .card-img-top{
+        width: 100%;
+        height: 290px;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .card-img-top{
+        width:100%;
+        height:180px;
+        object-fit: cover;
+    }
+    .category{
+        width: 295px;
+    }
+    .text-width{
+        margin-top: 60px;
+    }
+    .text-width h1{
+        width: 300px;
+        margin-left: -50px;
+    }
+    .search-form{
+       margin-left: 20px;
+    }
+    .search{
+        margin-top: 20px;
+    }
+    /* .search-content{
+        margin: 0 auto;
+     }  */
 }
 
 
@@ -750,4 +787,30 @@ hr{
 }
 .form-contact .row .col-sm h1{
     font-size: xx-large;
+}
+@media (min-width: 426px) and (max-width: 768px){
+    .services .help-services p{
+        width: 550px;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 425px){
+    
+    .services{
+        width: 300px;
+    }
+    .services .help-services p{
+        width: 220px;
+        text-align: justify;
+    }
+    .table{
+        width: 200px;
+    }
+    .table tbody td{
+        padding: 5px 5px;
+        text-align: justify;
+    }
+    .form-contact{
+        width: 230px;
+    }
 }
