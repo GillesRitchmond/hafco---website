@@ -16,6 +16,7 @@ use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -58,7 +59,7 @@ class CatalogController extends AbstractController
      */
     public function index(PaginatorInterface $paginatorInterface, Request $request, ProductRepository $repository, CategoryRepository $categoryRepository): Response
     {
-        //$categories = $categoryRepository->findAll();
+        // $product = $repository->findAllProducts();
 
         $search = new ProductSearch();
         $form = $this->createForm(ProductSearchType::class, $search);
@@ -69,11 +70,15 @@ class CatalogController extends AbstractController
             $request->query->getInt('page', 1), 
             12
         );
-
+        if($request->get('ajax')){
+            return new JsonResponse([
+                'content' => $this->renderView('catalog/_index.html.twig',['products'=>$products])
+            ]);
+        }
         return $this->render('catalog/index.html.twig', [
             'controller_name' => 'CatalogController',
             'products' => $products,
-            // 'categories' => $categories,
+            // 'product' => $product,
             'form' => $form->createView()
         ]);
         

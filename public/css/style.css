@@ -175,17 +175,24 @@ nav ul li a:hover{
 
 @media screen and (max-width: 767px){
     .footer{
-        padding: 10px;
-    }
+        padding-top: 5px;
+    }           
     .footer-content{
-        margin-top: 40px;
+        margin-top: 30px;
+        text-align: left;
+        margin-left: -15px;
     }
-    .contact{
-        margin-left: -20px;
+    .help{
+        text-align: left;
     }
-    .contact li{
-        width: 250px;
-    }   
+    .footer-link li{
+        list-style: none;
+        text-align: left;  
+        margin-top: 7px;
+    }
+    .politics{
+        margin-left: 30px;
+    }
 }
 
 /**************** PRODUCTS PAGE ***********************/
@@ -193,6 +200,9 @@ nav ul li a:hover{
     width: 100%;
     height: 15vw;
     object-fit: cover;
+}
+.category{
+    color: #345282;
 }
 /**************** BANNER ***********************/
 .bg-catalog{
@@ -226,7 +236,7 @@ nav ul li a:hover{
     color:#FFBC00;
 }
 .search{
-    margin-top: 30px;
+    /* margin-top: 10px; */
     align-content: center;
 }
 .search-form{
@@ -623,7 +633,54 @@ hr{
     border: none;
     background-color: #FFBC00;
 }
-
+/* .img-hover:hover{
+    color:rgba(255, 255, 255, 0.1);
+    height: fit-content;
+    width: fit-content;
+} */
+.img-product{
+    height: 250px;
+    width: 250px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #d6d6d6;
+    object-fit: cover;
+}
+.img-hover{
+    background-color:rgba(255, 255, 255, 0);
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    text-align:center;
+    margin-top: 8px;
+    padding-top: 110px;
+}
+.details-btn{
+    text-align: center;
+    margin-top: 30px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0);
+    border-radius: 20px;
+    text-decoration: none;
+    color: #FFF;
+    padding: 5px 10px;
+    border-width: 2px;
+    color:rgba(255, 255, 255, 0);
+}
+.details-btn:hover{
+    color: rgba(255, 255, 255);
+    border-color: rgba(255, 255, 255);
+}
+.img-hover:hover{
+    background-color:rgba(0, 0, 0, 0.479);
+    width: 250px;
+    height: 250px;
+}
+.about-img{
+    width: 350px;
+    height: 320px;
+    object-fit: cover;
+}
 
 @media screen and (max-width: 767px){
     .fixed-navbar{
@@ -689,6 +746,11 @@ hr{
     .product-content{
         margin: 0 auto;
         max-width: min-content;
+    }
+    .about-img{
+        width: 327px;
+        height: 300px;
+        margin: 8px 0px;
     }
     
 }
@@ -796,7 +858,7 @@ hr{
 
 @media (min-width: 320px) and (max-width: 425px){
     
-    .services{
+    /* .services{
         width: 300px;
     }
     .services .help-services p{
@@ -812,5 +874,5 @@ hr{
     }
     .form-contact{
         width: 230px;
-    }
+    } */
 }

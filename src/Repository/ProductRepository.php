@@ -36,10 +36,9 @@ class ProductRepository extends ServiceEntityRepository
     public function findAllProducts(): array
     {
         return $this->createQueryBuilder('p')
-            ->where('p.productPrice = 2000')
+            ->where('p.productPrice >= 0')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
     // /**
@@ -67,29 +66,28 @@ class ProductRepository extends ServiceEntityRepository
 
     /**
      * Pour récupérer les produits avec une recherche
-     * @return Product[]
+     * @return Query
      */
-    public function findAllVisibleQuery(ProductSearch $search): array
+    public function findAllVisibleQuery(ProductSearch $search): Query
     {
         
         $query = $this
             ->createQueryBuilder('p')
-            ->select('c', 'p')
-            ->join('p.categories', 'c');
+            ->select('p')
+            ;
 
-
-        if($search->getProductName()){
+        if(!empty($search->getProductName())){
             $query = $query
-                ->where('p.productName LIKE :name')
+                ->andwhere('p.productName LIKE :name')
                 ->setParameter('name', '%'.$search->getProductName().'%');
         }
 
-        if(!empty($search->getCategories())){
-            $query = $query 
-                ->andWhere('p.categories IN (:categories)')
-                ->setParameter('categories', $search->getCategories());
-        }
-       return $query->getQuery()->getResult();
+        // if(!empty($search->getCategories())){
+        //     $query = $query 
+        //         ->andWhere('p.categories = :categories')
+        //         ->setParameter('categories', $search->getCategories());
+        // }
+       return $query->getQuery();
     }
 
 
@@ -120,25 +118,7 @@ class ProductRepository extends ServiceEntityRepository
             ->select('p');
     }
 
-    /**
-     * @return Product[]
-     */
-    public function findProductByCategory(ProductByCategory $productByCategory): array
-    {
-        $query = $this
-            ->createQueryBuilder('p')
-            ->select('c', 'p')
-            ->join('p.categories', 'c');
-
-            if(!empty($productByCategory->categories)){
-                $query = $query 
-                    ->andWhere('c.id IN (:categories)')
-                    ->setParameter('categories', $productByCategory->categories);
-            }
-
-        return $query->getQuery()->getResult();
-    }
-
+    
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

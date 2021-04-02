@@ -7,6 +7,7 @@ use App\Repository\ProductRepository;
 use App\Entity\Product;
 use App\Entity\ProductSearch;
 use App\Form\ProductSearchType;
+use App\Form\ProductSearchTypeAdmin;
 use App\Form\ProductType;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -36,7 +37,7 @@ class AdminProductController extends AbstractController
         // $products = $repository->findAll();
 
         $search = new ProductSearch();
-        $form = $this->createForm(ProductSearchType::class, $search);
+        $form = $this->createForm(ProductSearchTypeAdmin::class, $search);
         $form->handleRequest($request);
 
 

@@ -26,18 +26,23 @@ class ProductType extends AbstractType
                 'label' => 'Nom du produit'
             ], TextType::class)
             ->add('productDescription', null, [
-                'label' => 'Description du produit'
+                'label' => 'Description du produit',
+                'row_attr' => ['class' => 'textarea']
             ], TextareaType::class)
             ->add('productPrice', null, [
                 'label' => 'Prix du produit'
             ], DecimalType::class)
             ->add('imageFile', VichImageType::class,[
-                'required' => true
+                'required' => true,
+                'row_attr' => ['class' => 'custom-file-input']
             ])  
             ->add('categories', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'categoryName',
-                'multiple' => false
+                'multiple' => false,
+                'attr' => [
+                    'class' => 'Ex: meuble de bureau'
+                ]
             ])
             //->add('Image')
             // ->add('slug')

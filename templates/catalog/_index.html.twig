@@ -1,0 +1,29 @@
+{% for product in products %}
+    <div class="col-md-4">
+        <div class="card mx-auto my-auto h-100">
+                    {# <img src="{{product.image}}" style="height=100%; width=100%"/> #}
+                {% if product.image %}
+
+                    <img src="{{ vich_uploader_asset(product, 'imageFile')}}" class="card-img-top">
+
+                {% endif %}
+                
+            <div class="card-body">
+                <h3 class="card-title"> 
+                    {{product.productName}}
+                </h3>
+            <hr>
+                <p class="card-text">
+                    {{product.productDescription}}
+                </p>
+            </div>
+            <a href="{{ path('product.show', {id: product.id, slug: product.slug}) }}" >
+                <div class="card-footer">
+                    <small class="text">
+                        Plus de détails
+                    </small>
+                </div>
+            </a>
+        </div>
+    </div>
+{% endfor %}

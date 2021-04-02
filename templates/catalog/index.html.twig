@@ -8,17 +8,15 @@
 
         <div class="banner bg-catalog">
             <div class="content container">
-                <div class="text-width">
-
-                    <h1> Rechercher dans <br/> notre<span id="ctlg"> catalogue </span> </h1>
-
+                <div class="text-width mx-auto">
                     <div class="input-group search">
                        <div class="row search-form">
-                       {{form_start(form, {'method': 'GET'})}}
+                       {{form_start(form, {attr: {class: 'js-filter-form'}}) }}
                             <div class="col-lg-12 search-content">
                                 <div class="row px-12" id="adv-search">
                                     <div class="row">
                         {# MENU DEROULANT POUR LES CATEGORIES #}
+                        <h1 class="mb-4"> Rechercher dans <br/> notre<span id="ctlg"> catalogue </span> </h1>
 
                                         {# <div class="col-2 col-sm-3 form-row">
                                             <button type="button" class="input-group-btn btn btn-search btn-default dropdown-toggle" data-toggle="dropdown">
@@ -36,7 +34,7 @@
 
                                         {# <input type="text" class="form-control" placeholder="Exemple : Fournitures de bureau" {{(form.productName)}}/> #}
 
-                                        <div class="col col-md-11 form-row search-field">
+                                        <div class="col col-md-10 form-row search-field mx-auto">
                                             {{form_row(form.productName)}}
                                         </div>
 
@@ -46,8 +44,8 @@
                                         
                         {# {{form_end(form)}} #}
                         {# BOUTON DE VALIDATION DE LA RECHERCHE #}
-                                        <div class="">
-                                            <button class="btn btn-secondary mt-4"> Rechercher
+                                        <div class="col-md">
+                                            <button class="btn btn-secondary mt-4 mx-auto"> Rechercher
                                                 {# <span class="glyphicon glyphicon-search" aria-hidden="true" >
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
                                                         <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0
@@ -67,12 +65,12 @@
         </div>
         </div>
        
-        <div class="container section-content">
+        <div class="container section-content js-filter">
             <div class="row g-2">
                 <div class="col-6 col-md-3">
-                    <div class="p-3 border bg-light filter category">
+                    <div class="p-3 border bg-light filter " data-bs-spy="scroll">
 
-                        <div class="category">Catégories de produits</div>
+                        <div class="category"><h5>Catégories de produits</h5></div>
                         <hr>
                         {# {{ form_start(formData, {'method': 'GET'}) }} #}
                             {# {{ form_row(form.categories) }} #}
@@ -81,13 +79,14 @@
 
                         {{form_row(form.categories) }}
                         
-                        <button type="submit" class="btn btn-primary">Rechercher</button>
+                        <button type="submit" class="btn btn-primary mt-3">Rechercher</button>
                         {{form_end(form)}}
 
-                        {# <div class="category">Sous-catégories de produits</div>
-                        <hr>
+                        {# <hr class="mt-3">
+                        <div class="category"><h5>Sous-catégories de produits</h5></div>
+                        <hr> #}
 
-                        {{form_row(form.subcategories) }} #}
+                        {# {{form_row(form.categories) }} #}
                         
                         {# <ul class="list-group list-group-flush"> #}
 
@@ -113,44 +112,17 @@
                                         {# <li class="breadcrumb-item"><a href="#">Home</a></li>
                                         <li class="breadcrumb-item"><a href="#">Library</a></li>
                                         <li class="breadcrumb-item active" aria-current="page">Data</li> #}
+                                        <div class="category"><h5>Liste de produits</h5></div>
                                     </ol>
                                 </nav>
                             </div>
                             <hr>
 
-                        <div class="row row-cols-1 row-cols-md-3 g-2">
-                                {% for product in products %}
-                                    <div class="col-md-4">
-                                        <div class="card mx-auto my-auto h-100">
-                                                    {# <img src="{{product.image}}" style="height=100%; width=100%"/> #}
-                                                {% if product.image %}
-
-                                                    <img src="{{ vich_uploader_asset(product, 'imageFile')}}" class="card-img-top">
-
-                                                {% endif %}
-                                                
-                                            <div class="card-body">
-                                                <h3 class="card-title"> 
-                                                    {{product.productName}} -{{product.categories}}
-                                                </h3>
-                                            <hr>
-                                                <p class="card-text">
-                                                    {{product.productDescription}}
-                                                </p>
-                                            </div>
-                                            <a href="{{ path('product.show', {id: product.id, slug: product.slug}) }}" >
-                                                <div class="card-footer">
-                                                    <small class="text">
-                                                        Plus de détails
-                                                    </small>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                {% endfor %}
+                        <div class="row row-cols-1 row-cols-md-3 g-2 js-filster-content">
+                                {% include 'catalog/_index.html.twig'%}
                             </div>
 
-                                <div aria-label="navigation" class="bg-light">
+                                <div aria-label="navigation" class="bg-light js-filter-pagination">
                                         
                                         {{ knp_pagination_render(products) }}
                                         
