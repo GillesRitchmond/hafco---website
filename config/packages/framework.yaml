@@ -17,4 +17,4 @@ framework:
         log: true
 
     translator:
-        enabled: false
+        enabled: true

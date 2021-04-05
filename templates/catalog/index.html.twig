@@ -67,7 +67,7 @@
        
         <div class="container section-content js-filter">
             <div class="row g-2">
-                <div class="col-6 col-md-3">
+                <div class="col-6 col-md-3 category-list">
                     <div class="p-3 border bg-light filter " data-bs-spy="scroll">
 
                         <div class="category"><h5>Catégories de produits</h5></div>
@@ -118,14 +118,12 @@
                             </div>
                             <hr>
 
-                        <div class="row row-cols-1 row-cols-md-3 g-2 js-filster-content">
+                            <div class="row row-cols-1 row-cols-md-3 g-2 js-filster-content">
                                 {% include 'catalog/_index.html.twig'%}
                             </div>
 
-                                <div aria-label="navigation" class="bg-light js-filter-pagination">
-                                        
-                                        {{ knp_pagination_render(products) }}
-                                        
+                                <div aria-label="navigation" class="bg-light row pagination pagination-sm justify-content-center flex-wrap js-filter-pagination">
+                                        <div class="pagination-sm">{{ knp_pagination_render(products) }}</div>
                                 </div>
                             </div>
                         </div>

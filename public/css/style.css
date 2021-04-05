@@ -45,7 +45,7 @@ body{
 
 /**************** NAVBAR ***********************/
 
-.fixed-navbar{
+.navbar{
     background-color: #FFF;
     /* margin-top: 15px; */
     box-shadow: 0px 0.15px 20px #345282;
@@ -60,19 +60,27 @@ nav ul li{
 nav ul img{
     margin-top: -12px;
 }
-nav ul li a{
+.navbar-nav .nav-item .nav-link{
     color: #345282;
 }
-nav ul li a:hover{
+.navbar-nav .nav-item .nav-link:hover{
     color: #FFBC00;
 }
-.active{
+nav ul li a .active{
     color:#FFBC00;
 }
 .body-hafco{
-    margin-top:80px;
+    margin-top: 0px;
 }
 
+@media screen and (max-width: 767px){
+    .brand{
+        /* visibility: hidden; */
+        margin: 5px 0px;
+        width: 40%;
+        height: 40%;
+    }
+}
 
 /**************** FOOTER ***********************/
 
@@ -304,7 +312,7 @@ nav ul li a:hover{
     }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
     .card-img-top{
         width:100%;
         height:180px;
@@ -313,22 +321,28 @@ nav ul li a:hover{
     .category{
         width: 295px;
     }
+    .category-list{
+        width: 400px;
+    }
     .text-width{
-        margin-top: 60px;
+        margin-top: -15px;
+    }
+    .search{
+        margin-left: -60px;
     }
     .text-width h1{
         width: 300px;
-        margin-left: -50px;
+        /* margin-left: -50px; */
     }
     .search-form{
-       margin-left: 20px;
+       /* margin-left: 20px; */
     }
     .search{
-        margin-top: 20px;
+        /* margin-top: 20px; */
     }
-    /* .search-content{
-        margin: 0 auto;
-     }  */
+    .pagination{
+        width: 20px;
+    }
 }
 
 
@@ -347,7 +361,7 @@ nav ul li a:hover{
     font-weight: bold;
 }
 .product{
-    margin-top: 150px;
+    margin-top: 20px;
 }
 .product .bg-light{
     padding: 30px;
@@ -409,6 +423,7 @@ nav ul li a:hover{
     color:#FFBC00
 }
 
+
 /**************** SECTION CONTENT ***********************/
 .section-content{
     margin-top: 30px;
@@ -459,6 +474,12 @@ hr{
 }
 .pagination .page-item{
     margin:0px;
+}
+
+@media screen and (max-width: 767px){
+    .product{
+        margin-top: 0px;
+    }
 }
 
 
@@ -683,21 +704,18 @@ hr{
 }
 
 @media screen and (max-width: 767px){
-    .fixed-navbar{
-        visibility: hidden;
-    }
-    .banner{
+    /* .banner{
         text-align: center;
         height: 350px;
         margin-top: -80px;
-    }
+    }*/
     .text-width{
-        width: 200px;
+        width: 150px;
         color: #FFF;
     }
-    .text-width h1{
+    /* .text-width h1{
         font-size: 20px;
-    }
+    }  */
     .carousel-item{
         margin: 0 auto;
     }
@@ -748,17 +766,17 @@ hr{
         max-width: min-content;
     }
     .about-img{
-        width: 327px;
+        width: 342px;
         height: 300px;
         margin: 8px 0px;
+    }
+    .img-hover{
+        visibility: hidden;
     }
     
 }
 
 @media (min-width: 768px) and (max-width: 1024px){
-    .fixed-navbar{
-        visibility: hidden;
-    }
     .banner{
         text-align: center;
         height: 350px;
@@ -795,6 +813,19 @@ hr{
 .block-text p{
     text-align: justify;
     text-justify: auto;
+}
+@media screen and (max-width: 425px){
+    .content{
+        margin-top: 50px;
+    }
+    .meubles{
+        margin-left: -10px;
+        width: 40px;
+    }
+    .meubles-btn{
+        width:300px;
+        margin: 40px 0px;
+    }
 }
 
 /**************** SERVICES PAGE ***********************/
@@ -850,15 +881,25 @@ hr{
 .form-contact .row .col-sm h1{
     font-size: xx-large;
 }
+@media screen and (max-width: 767px){
+    .services .help-services p{
+        width: 350px;
+    }
+    .img-pub{
+        margin-top: 15px;
+        height: 200px
+    }
+}
+
 @media (min-width: 426px) and (max-width: 768px){
     .services .help-services p{
         width: 550px;
     }
 }
 
-@media (min-width: 320px) and (max-width: 425px){
+/*@media (min-width: 320px) and (max-width: 425px){
     
-    /* .services{
+    .services{
         width: 300px;
     }
     .services .help-services p{
@@ -874,5 +915,5 @@ hr{
     }
     .form-contact{
         width: 230px;
-    } */
-}
+    } 
+}*/
