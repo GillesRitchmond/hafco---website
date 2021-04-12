@@ -70,15 +70,23 @@ class CatalogController extends AbstractController
             $request->query->getInt('page', 1), 
             12
         );
+
+        // $productByCategory =$paginatorInterface->paginate(
+        //     $repository->findAllVisibleQuery($search),
+        //     $request->query->getInt('page', 1),
+        //     12
+        // );
+
         if($request->get('ajax')){
             return new JsonResponse([
                 'content' => $this->renderView('catalog/_index.html.twig',['products'=>$products])
             ]);
         }
+
         return $this->render('catalog/index.html.twig', [
             'controller_name' => 'CatalogController',
             'products' => $products,
-            // 'product' => $product,
+            // 'productByCategory' => $productByCategory,
             'form' => $form->createView()
         ]);
         

@@ -41,28 +41,21 @@ class ProductRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    // /**
-    //  * @return Query
-    //  */
-    // public function findAllVisibleQuery(ProductSearch $search): Query
-    // {
+    /**
+     * @return Query
+     */
+    public function findTheVisibleQuery(ProductSearch $search): Query
+    {
         
-    //     $query = $this->findVisibleQuery();
+        $query = $this->findVisibleQuery();
 
-    //     if($search->getProductName()){
-    //         $query = $query
-    //             ->where('p.productName LIKE :name')
-    //             ->setParameter('name', '%'.$search->getProductName().'%');
-    //     }
-        
-    //     if (!empty($search->categories)) {
-    //         $query = $query
-    //             ->andWhere('c.id IN (:categories)')
-    //             ->setParameter('categories', $search->categories);
-    //     }
-
-    //     return $query->getQuery();
-    // }
+        if($search->getProductName()){
+            $query = $query
+                ->where('p.productName LIKE :name')
+                ->setParameter('name', '%'.$search->getProductName().'%');
+        }
+        return $query->getQuery();
+    }
 
     /**
      * Pour récupérer les produits avec une recherche
@@ -74,19 +67,29 @@ class ProductRepository extends ServiceEntityRepository
         $query = $this
             ->createQueryBuilder('p')
             ->select('p')
+            // ->innerJoin('p.categories', 'c')
             ;
+        
+            // if(!empty($search->getProductName()) AND !empty($search->getCategories())){
+            // $query = $query
+            //     ->where('p.productName LIKE :name')
+            //     ->andWhere('p.categories = :categories')
+            //     ->setParameter('name', '%'.$search->getProductName().'%')
+            //     ->setParameter('categories', $search->getCategories());
+            // }
 
         if(!empty($search->getProductName())){
             $query = $query
-                ->andwhere('p.productName LIKE :name')
+                ->where('p.productName LIKE :name')
                 ->setParameter('name', '%'.$search->getProductName().'%');
         }
 
         // if(!empty($search->getCategories())){
         //     $query = $query 
-        //         ->andWhere('p.categories = :categories')
+        //         ->andWhere('p.categories IN (:categories)')
         //         ->setParameter('categories', $search->getCategories());
         // }
+
        return $query->getQuery();
     }
 

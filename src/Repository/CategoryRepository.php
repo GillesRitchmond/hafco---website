@@ -64,7 +64,7 @@ class CategoryRepository extends ServiceEntityRepository
     {
         return $this->findBy(array(), array('CategoryName' => 'ASC'));
     }
-
+    
 
 //     public function findOneByCategory($id)
 //     {

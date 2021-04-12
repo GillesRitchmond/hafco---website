@@ -6,16 +6,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 class ProductByCategory
 {
-    
-    /**
-     * @var ArrayCollection
-     */
-    private $categories;
-
     public function __construct()
     {
         $this->categories = new ArrayCollection();
     }
+
+
+    /**
+     * @var ArrayCollection
+     */
+    private $categories;
 
     /**
      * @return ArrayCollection

@@ -37,7 +37,7 @@
                 <table class="table table-hover table-bordered">
                     <thead class="table-color-brand">
                         <tr>
-                        <th scope="col">#</th>
+                        {# <th scope="col">#</th> #}
                         <th scope="col">Titre</th>
                         <th scope="col">Description</th>
                         {# <th scope="col">Prix</th> #}
@@ -49,7 +49,7 @@
                     <tbody>
                         {% for product in products %}
                             <tr>
-                                <td>{{product.id}}</td>
+                                {# <td>{{product.id}}</td> #}
                                 <td class="name">{{ product.productName}}</td>
                                 <td>{{ product.productDescription}}</td>
                                 {# <td>{{ product.productPrice}}</td> #}
@@ -61,11 +61,11 @@
                                             <a href="{{ path ('admin.product.edit',{id: product.id}) }}" class="btn btn-secondary fas fa-pen fa-sm action"></a>
                                         </li>
                                         <li>
-                                            <form method="POST" action="{{ path('admin.product.delete', {id: product.id}) }}" 
+                                            <form method="POST" action="{{ path ('admin.product.delete',{id: product.id}) }}" 
                                             onsubmit="return confirm('Etes vous vraiment sûr ?')">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id)}}">
-                                                <a class="btn btn-danger far fa-trash-alt fa-sm action"></a>
+                                                <button class="btn btn-danger far fa-trash-alt fa-sm action"></button>
                                             </form>
                                         </li>
                                     </ul>

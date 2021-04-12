@@ -21,7 +21,7 @@ Class ProductSearch{
     //  */
     // private $subcategories;
     
-
+    
     
     public function getProductName(): ?string
     {
